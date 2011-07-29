@@ -10,7 +10,7 @@ from pyjamas import Window
 
 from DataService import DataService
 
-class LoginPanel(VerticalPanel):
+class RegisterPanel(VerticalPanel):
     def __init__(self, listener):
         VerticalPanel.__init__(self,
                                HorizontalAlignment=HasAlignment.ALIGN_CENTER,
@@ -21,11 +21,11 @@ class LoginPanel(VerticalPanel):
                                
         self.listener = listener
                                
-        self.remote = DataService(['login'])                 
+        self.remote = DataService(['register'])                 
                                
         vpanel = VerticalPanel(Spacing=5) 
         
-        grid = Grid(2, 2,
+        grid = Grid(3, 2,
                     BorderWidth=0,
                     CellPadding=5,
                     CellSpacing=0)
@@ -35,45 +35,52 @@ class LoginPanel(VerticalPanel):
         grid.setWidget(0, 1, self.tb)
         
         grid.setWidget(1, 0, Label("Password:"))
-        self.ptb = PasswordTextBox(Name="password")
-        grid.setWidget(1, 1, self.ptb)
+        self.ptb1 = PasswordTextBox(Name="password1")
+        grid.setWidget(1, 1, self.ptb1)
+        
+        grid.setWidget(2, 0, Label("Password confirmation:"))
+        self.ptb2 = PasswordTextBox(Name="password2")
+        grid.setWidget(2, 1, self.ptb2)
         
         formatter = grid.getCellFormatter()
-        formatter.setAlignment(0, 0, hAlign = HasAlignment.ALIGN_RIGHT)
-        formatter.setAlignment(1, 0, hAlign = HasAlignment.ALIGN_RIGHT)
         
-        vpanel.add(Label("User Login"))
+        for row in range(3):
+            formatter.setAlignment(row, 0, hAlign = HasAlignment.ALIGN_RIGHT)
+        
+        vpanel.add(Label("Create an account"))
         vpanel.add(grid)
         
         hpanel = HorizontalPanel(Width="100%")
         
-        register_button = Button("Create an account", self.onRegisterButtonClick)
-        submit_button = Button("Login", self.onSubmitButtonClick)
+        submit_button = Button("Create the account", self.onSubmitButtonClick)
+        cancel_button = Button("Cancel", self.onCancelButtonClick)
         
-        hpanel.add(register_button)
-        hpanel.add(submit_button)        
-        
+        hpanel.add(cancel_button)
+        hpanel.add(submit_button)
         hpanel.setCellHorizontalAlignment(submit_button,
                                           HasAlignment.ALIGN_RIGHT)
         
         vpanel.add(hpanel)
-                                                  
-             
+                     
         self.add(vpanel)
                 
-    def onRegisterButtonClick(self, sender):
-        self.listener.onRegister(self)
         
     def onSubmitButtonClick(self, sender):
-        self.remote.login(self.tb.getText(), self.ptb.getText(), self)
+        self.remote.register(self.tb.getText(),
+                             self.ptb1.getText(),
+                             self.ptb2.getText(),
+                             self)
+                             
+    def onCancelButtonClick(self, sender):
+        self.listener.onBackToLogin(self)
         
     def onRemoteResponse(self, response, request_info):
         '''
         Called when a response is received from a RPC.
         '''
-        if request_info.method == 'login':
+        if request_info.method == 'register':
             if response == True:
-                self.listener.onLogin(self)
+                self.listener.onBackToLogin(self)
             else:
                 #TODO
                 Window.alert(response)

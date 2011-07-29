@@ -1,29 +1,32 @@
 from pyjamas.ui.Label import Label
 from pyjamas.ui.RootPanel import RootPanel
 from LoginPanel import LoginPanel
+from RegisterPanel import RegisterPanel
 from DashboardPanel import DashboardPanel
 from pyjamas import Window
 
-from pyjamas.Cookies import getCookie
-from pyjamas.JSONService import JSONProxy
+from DataService import DataService
         
 class ClientBank:
     def onModuleLoad(self):
     
-        self.remote = DataService()
+        self.remote = DataService(['isauthenticated'])
         
         self.curpanel = None
-        self.loginpanel = LoginPanel(self.onSubmitComplete)
-        self.dashboardpanel = DashboardPanel()
-
-        self.remote.isAuthenticated(self)
+                                                        
+        self.loginpanel = LoginPanel(self)              
+        self.registerpanel = RegisterPanel(self)        
+        self.dashboardpanel = DashboardPanel(self)      
+        self.remote.isauthenticated(self)
         
-    def onSubmitComplete(self, event):
-        result = event.getResults()
-        if result == "ok":
-             self.showPanel('dashboardpanel')
-        else: 
-            Window.alert(result)
+    def onLogin(self, sender):
+        self.showPanel('dashboardpanel')
+        
+    def onBackToLogin(self, sender):
+        self.showPanel('loginpanel')
+        
+    def onRegister(self, sender):
+        self.showPanel('registerpanel')
         
     def showPanel(self, panel):
         if self.curpanel <> None:
@@ -36,8 +39,8 @@ class ClientBank:
         '''
         Called when a response is received from a RPC.
         '''
-        if request_info.method == 'isAuthenticated':
-            if response:
+        if request_info.method == 'isauthenticated':
+            if response == True:
                 self.showPanel('dashboardpanel')
             else:
                 self.showPanel('loginpanel')
@@ -47,13 +50,6 @@ class ClientBank:
     def onRemoteError(self, code, message, request_info):
         Window.alert(message)
         
-          
-class DataService(JSONProxy):
-    methods = ['isAuthenticated']
-    
-    def __init__(self):
-        JSONProxy.__init__(self, 'services/', DataService.methods, {'X-CSRFToken': getCookie('csrftoken')})            
-
 if __name__ == '__main__':    
     app = ClientBank()
     app.onModuleLoad()
