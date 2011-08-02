@@ -1,3 +1,4 @@
 *.pyc
 mysite/cbank.db
+mysite/templates/*
 mysite/cbank/media/output/*
