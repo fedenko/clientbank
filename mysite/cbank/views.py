@@ -3,20 +3,17 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render_to_response
-from cbank.jsonrpc import JSONRPCService, jsonremote, FormProcessor
+from cbank.jsonrpc import JSONRPCService, jsonremote #, FormProcessor
 
 from cbank.models import BankAccount
 
 service = JSONRPCService()
 
-processor = FormProcessor({})
+#formservice = FormProcessor({})
 
 def index(request):
     get_token(request)
     return render_to_response('ClientBank.html')
-    
-def formservice(request):
-    return HttpResponse('ok')
     
 @jsonremote(service)
 def login(request, username, password):

@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     (r'^$',  'cbank.views.index'),
     (r'^admin/', include(admin.site.urls)),
     (r'^services/$', 'cbank.views.service'),
-    (r'^formservice/$', 'cbank.views.formservice'),
+    # (r'^formservice/$', 'cbank.views.formservice'),
     (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'cbank/media/output'}),    
 )
