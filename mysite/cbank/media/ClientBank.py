@@ -33,7 +33,10 @@ class ClientBank:
             RootPanel().remove(getattr(self, self.curpanel))
             
         self.curpanel = panel
-        RootPanel().add(getattr(self, self.curpanel)) 
+        p = getattr(self, self.curpanel)
+        RootPanel().add(p)
+        if hasattr(p, 'onShow'):
+            p.onShow()  
         
     def onRemoteResponse(self, response, request_info):
         '''

@@ -1,0 +1,40 @@
+#__pygwt_historyFrame {
+  position: absolute;
+}
+
+body {
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+.gwt-MenuBar {
+  background-color: #C3D9FF;
+  border: 1px solid #AAAAAA;
+  cursor: default;
+}
+
+.gwt-MenuBar .gwt-MenuItem {
+  padding: 1px 4px 1px 4px;
+/*  font-size: smaller;*/
+  cursor: default;
+}
+
+.gwt-MenuBar .gwt-MenuItem-selected {
+  background-color: #E8EEF7;
+}
+
+.grid {
+  border-collapse: collapse;
+  border: 1px solid #AAAAAA;
+}
+
+.grid-header {
+  background-color: #EEEEFF;
+  border: 1px solid #AAAAAA;
+  text-align: center;
+  font-weight: bold;
+}
+
+.grid td {
+  border: 1px solid #AAAAAA;
+}

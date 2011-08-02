@@ -1,0 +1,3 @@
+*.pyc
+mysite/cbank.db
+mysite/cbank/media/output/*

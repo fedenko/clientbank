@@ -97,3 +97,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'cbank',    
 )
+
+AUTH_PROFILE_MODULE = "cbank.UserProfile"
