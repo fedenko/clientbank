@@ -17,16 +17,18 @@ import sys
 # dump jsonservice into urlpatterns:
 #  (r'^service1/$', 'djangoapp.views.jsonservice'),
 
+# JSON-RPC 2.0 Specification
+# http://groups.google.com/group/json-rpc/web/json-rpc-2-0
+
 def response(id, result):
-    return HttpResponse(simplejson.dumps({'version': '1.1', 'id':id,
-                             'result':result, 'error':None}))
+    return HttpResponse(simplejson.dumps({'jsonrpc': '2.0',
+                                          'result':result,
+                                          'id':id}))
 def error(id, code, message):
-    return HttpResponse(simplejson.dumps({'id': id, 'version': '1.1',
-                             'error': {'name': 'JSONRPCError',
-                                       'code': code,
-                                       'message': message
-                                       }
-                                 }))
+    return HttpResponse(simplejson.dumps({'jsonrpc': '2.0',
+                                          'error': {'code': code,
+                                                    'message': message},
+                                          'id': id}))
 
 class JSONRPCService:
     def __init__(self, method_map=None):
