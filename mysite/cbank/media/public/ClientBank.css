@@ -38,3 +38,11 @@ body {
 .grid td {
   border: 1px solid #AAAAAA;
 }
+
+.pseudo-link {
+  cursor: pointer;
+}
+
+div.pseudo-link:hover { 
+  text-decoration: underline;
+   }

@@ -1,5 +1,11 @@
 from cbank.models import BankAccount, Transaction
 from django.contrib import admin
 
-admin.site.register(BankAccount)
-admin.site.register(Transaction)
+class BankAccountAdmin(admin.ModelAdmin):
+    list_display = ('number', 'accounttype', 'user')
+    
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ('details', 'payer', 'payee', 'value', 'datetime')
+
+admin.site.register(BankAccount, BankAccountAdmin)
+admin.site.register(Transaction, TransactionAdmin)

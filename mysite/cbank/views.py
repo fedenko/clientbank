@@ -53,7 +53,9 @@ def register(request,username, password1, password2):
 def getaccounts(request):
     if request.user.is_authenticated():        
         accounts = BankAccount.objects.filter(user = request.user)
-        return [str(i.number) for i in accounts]
+        return [{'id': account.id,
+                 'number': str(account.number),
+                 'type': account.get_accounttype_display()} for account in accounts]
     else:
         return False
 

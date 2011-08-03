@@ -16,7 +16,7 @@ from pyjamas import Window
 from pyjamas.ui.HTML import HTML
 
 from IntroSink import IntroSink
-from AccountsSink import AccountsSink
+from AccountListSink import AccountListSink
 
 from DataService import DataService
 
@@ -43,7 +43,7 @@ class DashboardPanel(VerticalPanel):
         
         self.cursink=None
         self.introsink = IntroSink()
-        self.accountssink = AccountsSink()
+        self.accountssink = AccountListSink()
         
         menu_account = MenuBar(vertical=True)
         menu_account.addItem(u"My Accounts", MenuCmd(self.onMyAccounts))

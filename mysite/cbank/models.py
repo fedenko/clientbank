@@ -8,11 +8,13 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
     
 class BankAccountManager(models.Manager):
-    def create_account(self, user):
+    def create_account(self, user, accounttype):
         generator = Random()
         generator.seed()
         number = int(completed_number(generator, ['7', '7', '7', '7'], 16))
-        account = self.model(user=user, number = number)
+        account = self.model(user=user,
+                             number = number,
+                             accounttype=accounttype)
         account.save(using=self._db)
         return account
 
@@ -41,3 +43,6 @@ class  Transaction(models.Model):
     value = models.DecimalField(max_digits=19, decimal_places=2)
     details = models.TextField()
     datetime = models.DateTimeField(auto_now=True, auto_now_add=True)
+    
+    def __unicode__(self):
+        return self.details

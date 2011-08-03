@@ -22,8 +22,8 @@ import sys
 
 def response(id, result):
     return HttpResponse(simplejson.dumps({'jsonrpc': '2.0',
-                                          'result':result,
-                                          'id':id}))
+                                          'result': result,
+                                          'id': id}))
 def error(id, code, message):
     return HttpResponse(simplejson.dumps({'jsonrpc': '2.0',
                                           'error': {'code': code,
