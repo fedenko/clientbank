@@ -8,7 +8,7 @@ body {
 }
 
 .gwt-MenuBar {
-  background-color: #C3D9FF;
+  background-color: #EEEEFF;
   border: 1px solid #AAAAAA;
   cursor: default;
 }
@@ -20,7 +20,7 @@ body {
 }
 
 .gwt-MenuBar .gwt-MenuItem-selected {
-  background-color: #E8EEF7;
+  background-color: #CCCCFF;
 }
 
 .grid {

@@ -15,6 +15,8 @@ from pyjamas.ui.MenuItem import MenuItem
 from pyjamas import Window
 from pyjamas.ui.HTML import HTML
 
+from IntroSink import IntroSink
+from AccountsSink import AccountsSink
 
 from DataService import DataService
 
@@ -26,45 +28,6 @@ class MenuCmd:
     def execute(self):
         self.handler()
         
-class IntroSink(VerticalPanel):
-    def __init__(self):
-        VerticalPanel.__init__(self,
-                               HorizontalAlignment=HasAlignment.ALIGN_CENTER,
-                               VerticalAlignment=HasAlignment.ALIGN_MIDDLE,
-                               Width="100%",
-                               Height="100%",
-                               Spacing=5)
-        self.add(Label(u"Hello, %username%!"))
-        
-class AccountsSink(VerticalPanel):
-    def __init__(self):
-        VerticalPanel.__init__(self,
-                               #HorizontalAlignment=HasAlignment.ALIGN_CENTER,
-                               #VerticalAlignment=HasAlignment.ALIGN_MIDDLE,
-                               Width="100%",
-                               #Height="100%",
-                               Spacing=5)
-        self.grid = Grid(1, 1,
-                    BorderWidth=1,
-                    CellPadding=4,
-                    CellSpacing=1)
-        self.grid.setStyleName("grid")
-        self.grid.setText(0, 0, u"Account Number")
-        
-        formatter = self.grid.getCellFormatter()
-        formatter.setStyleName(0, 0, "grid-header")
-        
-        self.add(Label(u"Accounts"))
-        
-        self.add(self.grid)
-        
-    def setAccounts(self, accounts):
-        rows = len(accounts)
-        if rows > 0:
-            self.grid.resize(rows+1, 1)
-            for row in range(rows):
-                self.grid.setText(row+1, 0, accounts[row])
-
 class DashboardPanel(VerticalPanel):
     def __init__(self, listener):
         VerticalPanel.__init__(self,
@@ -76,7 +39,7 @@ class DashboardPanel(VerticalPanel):
                                
         self.listener = listener
         
-        self.remote = DataService(['getaccounts', 'logout'])
+        self.remote = DataService(['logout'])
         
         self.cursink=None
         self.introsink = IntroSink()
@@ -98,7 +61,7 @@ class DashboardPanel(VerticalPanel):
         
         
     def onMyAccounts(self, sender):
-        self.remote.getaccounts(self)
+        self.showSink('accountssink')
         
     def onLogoutButtonClick(self, sender):
         self.remote.logout(self)
@@ -123,9 +86,6 @@ class DashboardPanel(VerticalPanel):
         if request_info.method == 'logout':
             if response == True:
                 self.listener.onBackToLogin(self)
-        elif request_info.method == 'getaccounts':
-            self.showSink('accountssink')
-            self.accountssink.setAccounts(response)
         else:
             Window.alert('Unrecognized JSONRPC method.')
             
