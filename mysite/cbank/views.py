@@ -1,4 +1,7 @@
+# -*- coding: UTF-8 -*-
 from django.contrib import auth
+
+from django.utils.translation import ugettext as _
 
 from django.http import HttpResponse
 from django.middleware.csrf import get_token
@@ -23,9 +26,9 @@ def login(request, username, password):
             auth.login(request, user)
             return True
         else:
-            return "Your account has been disabled!"
+            return _(u"Your account has been disabled!")
     else:
-        return "Your username and password were incorrect."
+        return _(u"Your username and password were incorrect.")
         
 @jsonremote(service)
 def isauthenticated(request):

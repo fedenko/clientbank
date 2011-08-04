@@ -4,11 +4,16 @@ from LoginPanel import LoginPanel
 from RegisterPanel import RegisterPanel
 from DashboardPanel import DashboardPanel
 from pyjamas import Window
+import dynamic
+
+from __pyjamas__ import JS
 
 from DataService import DataService
         
 class ClientBank:
     def onModuleLoad(self):
+               
+        dynamic.ajax_import("/jsi18n/", names = ['gettext'])
     
         self.remote = DataService(['isauthenticated'])
         
@@ -48,7 +53,7 @@ class ClientBank:
             else:
                 self.showPanel('loginpanel')
         else:
-            Window.alert('Unrecognized JSONRPC method.')
+            Window.alert(JS('gettext("Unrecognized JSONRPC method.")'))
             
     def onRemoteError(self, code, message, request_info):
         Window.alert(message)

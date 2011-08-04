@@ -8,6 +8,8 @@ from pyjamas.ui.Button import Button
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas import Window
 
+from __pyjamas__ import JS
+
 from DataService import DataService
 
 class RegisterPanel(VerticalPanel):
@@ -30,15 +32,15 @@ class RegisterPanel(VerticalPanel):
                     CellPadding=5,
                     CellSpacing=0)
                 
-        grid.setWidget(0, 0, Label("Username:"))
+        grid.setWidget(0, 0, Label(JS('gettext("Username:")')))
         self.tb = TextBox(Name="username") 
         grid.setWidget(0, 1, self.tb)
         
-        grid.setWidget(1, 0, Label("Password:"))
+        grid.setWidget(1, 0, Label(JS('gettext("Password:")')))
         self.ptb1 = PasswordTextBox(Name="password1")
         grid.setWidget(1, 1, self.ptb1)
         
-        grid.setWidget(2, 0, Label("Password confirmation:"))
+        grid.setWidget(2, 0, Label(JS('gettext("Password confirmation:")')))
         self.ptb2 = PasswordTextBox(Name="password2")
         grid.setWidget(2, 1, self.ptb2)
         
@@ -47,13 +49,13 @@ class RegisterPanel(VerticalPanel):
         for row in range(3):
             formatter.setAlignment(row, 0, hAlign = HasAlignment.ALIGN_RIGHT)
         
-        vpanel.add(Label("Create an account"))
+        vpanel.add(Label(JS('gettext("Create an account")')))
         vpanel.add(grid)
         
         hpanel = HorizontalPanel(Width="100%")
         
-        submit_button = Button("Create the account", self.onSubmitButtonClick)
-        cancel_button = Button("Cancel", self.onCancelButtonClick)
+        submit_button = Button(JS('gettext("Create the account")'), self.onSubmitButtonClick)
+        cancel_button = Button(JS('gettext("Cancel")'), self.onCancelButtonClick)
         
         hpanel.add(cancel_button)
         hpanel.add(submit_button)
@@ -85,7 +87,7 @@ class RegisterPanel(VerticalPanel):
                 #TODO
                 Window.alert(response)
         else:
-            Window.alert('Unrecognized JSONRPC method.')
+            Window.alert(JS('gettext("Unrecognized JSONRPC method.")'))
             
     def onRemoteError(self, code, message, request_info):
         Window.alert(message)

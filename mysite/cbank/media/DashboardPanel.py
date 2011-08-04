@@ -18,6 +18,8 @@ from pyjamas.ui.HTML import HTML
 from IntroSink import IntroSink
 from AccountListSink import AccountListSink
 
+from __pyjamas__ import JS
+
 from DataService import DataService
 
 class MenuCmd:
@@ -43,14 +45,16 @@ class DashboardPanel(VerticalPanel):
         
         self.cursink=None
         self.introsink = IntroSink()
-        self.accountssink = AccountListSink()
+        self.accountlistsink = AccountListSink()
         
         menu_account = MenuBar(vertical=True)
-        menu_account.addItem(u"My Accounts", MenuCmd(self.onMyAccounts))
+        menu_account.addItem(JS('gettext("My Accounts")'),
+                             MenuCmd(self.onMyAccounts))
         
         menubar = MenuBar(vertical=False)
-        menubar.addItem(MenuItem(u"Account", menu_account))
-        menubar.addItem(u"Logout", MenuCmd(self.onLogoutButtonClick))
+        menubar.addItem(MenuItem(JS('gettext("Account")'), menu_account))
+        menubar.addItem(JS('gettext("Logout")'),
+                        MenuCmd(self.onLogoutButtonClick))
                               
         self.sinkcontainer = SimplePanel()
         self.sinkcontainer.setHeight("100%")
@@ -61,7 +65,7 @@ class DashboardPanel(VerticalPanel):
         
         
     def onMyAccounts(self, sender):
-        self.showSink('accountssink')
+        self.showSink('accountlistsink')
         
     def onLogoutButtonClick(self, sender):
         self.remote.logout(self)
@@ -87,7 +91,7 @@ class DashboardPanel(VerticalPanel):
             if response == True:
                 self.listener.onBackToLogin(self)
         else:
-            Window.alert('Unrecognized JSONRPC method.')
+            Window.alert(JS('gettext("Unrecognized JSONRPC method.")'))
             
     def onRemoteError(self, code, message, request_info):
         Window.alert(message)

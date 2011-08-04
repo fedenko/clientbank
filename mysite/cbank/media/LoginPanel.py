@@ -10,6 +10,8 @@ from pyjamas import Window
 
 from DataService import DataService
 
+from __pyjamas__ import JS
+
 class LoginPanel(VerticalPanel):
     def __init__(self, listener):
         VerticalPanel.__init__(self,
@@ -30,11 +32,11 @@ class LoginPanel(VerticalPanel):
                     CellPadding=5,
                     CellSpacing=0)
                 
-        grid.setWidget(0, 0, Label("Username:"))
+        grid.setWidget(0, 0, Label(JS('gettext("Username:")')))
         self.tb = TextBox(Name="username") 
         grid.setWidget(0, 1, self.tb)
         
-        grid.setWidget(1, 0, Label("Password:"))
+        grid.setWidget(1, 0, Label(JS('gettext("Password:")')))
         self.ptb = PasswordTextBox(Name="password")
         grid.setWidget(1, 1, self.ptb)
         
@@ -42,12 +44,13 @@ class LoginPanel(VerticalPanel):
         formatter.setAlignment(0, 0, hAlign = HasAlignment.ALIGN_RIGHT)
         formatter.setAlignment(1, 0, hAlign = HasAlignment.ALIGN_RIGHT)
         
-        vpanel.add(Label("User Login"))
+        vpanel.add(Label(JS('gettext("User Login")')))
         vpanel.add(grid)
         
         hpanel = HorizontalPanel(Width="100%")
         
-        register_button = Button("Create an account", self.onRegisterButtonClick)
+        register_button = Button(JS('gettext("Create an account")'),
+                                    self.onRegisterButtonClick)
         submit_button = Button("Login", self.onSubmitButtonClick)
         
         hpanel.add(register_button)

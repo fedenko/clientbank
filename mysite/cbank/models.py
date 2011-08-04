@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 from random import Random
 from cbank.gencc import completed_number
@@ -11,7 +12,7 @@ class BankAccountManager(models.Manager):
     def create_account(self, user, accounttype):
         generator = Random()
         generator.seed()
-        number = int(completed_number(generator, ['7', '7', '7', '7'], 16))
+        number = completed_number(generator, ['7', '7', '7', '7'], 16)
         account = self.model(user=user,
                              number = number,
                              accounttype=accounttype)
@@ -20,19 +21,19 @@ class BankAccountManager(models.Manager):
 
 class BankAccount(models.Model):
     BANK_ACCOUNT_TYPE_CHOICES = (
-        (u'CC', u'Credit card'),
-        (u'TR', u'Transactional'),
-        (u'DP', u'Time deposit'),
+        (u'CC', _(u'Credit card')),
+        (u'TR', _(u'Transactional')),
+        (u'DP', _(u'Time deposit')),
     )
     user = models.ForeignKey(User)
-    number = models.PositiveIntegerField(unique=True)
+    number = models.CharField(max_length=16, unique=True)
     accounttype = models.CharField(max_length=2,
                                    choices=BANK_ACCOUNT_TYPE_CHOICES)
     
     objects = BankAccountManager()
     
     def __unicode__(self):
-        return u'%d' % self.number
+        return self.number
         
       
 class  Transaction(models.Model):

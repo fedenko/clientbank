@@ -3,6 +3,8 @@ from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui import HasAlignment
 from pyjamas.ui.Label import Label
 
+from __pyjamas__ import JS
+
 class IntroSink(VerticalPanel):
     def __init__(self):
         VerticalPanel.__init__(self,
@@ -11,4 +13,4 @@ class IntroSink(VerticalPanel):
                                Width="100%",
                                Height="100%",
                                Spacing=5)
-        self.add(Label(u"Hello, %username%!"))
+        self.add(Label(JS('gettext("Hello, \%username\%!")')))
