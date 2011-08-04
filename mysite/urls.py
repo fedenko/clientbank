@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     (r'^services/$', 'cbank.views.service'),
     # (r'^formservice/$', 'cbank.views.formservice'),
     (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
-    (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'cbank/media/output'}),    
+    (r'^(?P<path>.*)$', 'django.views.static.serve',
+     {'document_root': '/home/fedenko/Client-Bank/mysite/cbank/media/output'}),    
 )
