@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-04 21:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: media/output/ClientBank.ie6.cache.html:15266
+msgid "Hello, %username%!"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:17473
+#: media/output/ClientBank.ie6.cache.html:25936
+#: media/output/ClientBank.oldmoz.cache.html:26482
+#: media/output/ClientBank.opera.cache.html:26679
+msgid "Username:"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:17478
+#: media/output/ClientBank.ie6.cache.html:25941
+#: media/output/ClientBank.oldmoz.cache.html:26487
+#: media/output/ClientBank.opera.cache.html:26684
+msgid "Password:"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:17490
+msgid "User Login"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:17493
+#: media/output/ClientBank.ie6.cache.html:25966
+#: media/output/ClientBank.oldmoz.cache.html:26512
+#: media/output/ClientBank.opera.cache.html:26709
+msgid "Create an account"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:25946
+#: media/output/ClientBank.oldmoz.cache.html:26492
+#: media/output/ClientBank.opera.cache.html:26689
+msgid "Password confirmation:"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:25969
+#: media/output/ClientBank.oldmoz.cache.html:26515
+#: media/output/ClientBank.opera.cache.html:26712
+msgid "Create the account"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:25972
+#: media/output/ClientBank.oldmoz.cache.html:26518
+#: media/output/ClientBank.opera.cache.html:26715
+msgid "Cancel"
+msgstr ""
+
+#: media/output/ClientBank.ie6.cache.html:26032
+#: media/output/ClientBank.mozilla.cache.html:1696
+#: media/output/ClientBank.oldmoz.cache.html:1696
+#: media/output/ClientBank.oldmoz.cache.html:18072
+#: media/output/ClientBank.oldmoz.cache.html:26578
+#: media/output/ClientBank.opera.cache.html:26775
+#: media/output/ClientBank.safari.cache.html:1696
+#: media/output/ClientBank.safari.cache.html:17482
+msgid "Unrecognized JSONRPC method."
+msgstr ""
+
+#: media/output/ClientBank.mozilla.cache.html:1593
+#: media/output/ClientBank.oldmoz.cache.html:1593
+#: media/output/ClientBank.safari.cache.html:1593
+msgid "My Accounts"
+msgstr ""
+
+#: media/output/ClientBank.mozilla.cache.html:1597
+#: media/output/ClientBank.oldmoz.cache.html:1597
+#: media/output/ClientBank.safari.cache.html:1597
+msgid "Account"
+msgstr ""
+
+#: media/output/ClientBank.mozilla.cache.html:1598
+#: media/output/ClientBank.oldmoz.cache.html:1598
+#: media/output/ClientBank.safari.cache.html:1598
+msgid "Logout"
+msgstr ""
