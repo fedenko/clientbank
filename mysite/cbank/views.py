@@ -48,6 +48,8 @@ def register(request,username, password1, password2):
     form = auth.forms.UserCreationForm(data)
     if form.is_valid():
         new_user = form.save()
+        new_user.is_active = False
+        new_user.save()
         return True
     else:    
         return form.errors
