@@ -52,14 +52,17 @@ def register(request,username, password1, password2):
     else:    
         return form.errors
         
+    
 @jsonremote(service)       
 def getaccounts(request):
     if request.user.is_authenticated():        
         accounts = BankAccount.objects.filter(user = request.user)
         return [{'id': account.id,
-                 'number': str(account.number),
-                 'type': account.get_accounttype_display()} for account in accounts]
+                 'number': account.number,
+                 'type': account.get_accounttype_display(),
+                 'balance': '%.2f' % account.balance} for account in accounts]
     else:
         return False
+
 
 

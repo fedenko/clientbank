@@ -1,3 +1,4 @@
+from decimal import *
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -33,8 +34,27 @@ class BankAccount(models.Model):
     objects = BankAccountManager()
     
     def __unicode__(self):
-        return self.number
+        return "%s (%s, %s)" % (self.number,
+                               self.get_accounttype_display(),
+                               self.user.username)
+                               
+    def _get_balance(self):
+        as_payer = self.transaction_as_payer_set.all().values('value')
+        as_payer_value = Decimal(0)
+        for i in as_payer:
+            as_payer_value += i['value']
+            
+        as_payee = self.transaction_as_payee_set.all().values('value')
+        as_payee_value = Decimal(0)
+        for j in as_payee:
+            as_payee_value += j['value']
+            
+        balance = as_payee_value - as_payer_value
         
+        return balance
+        
+    balance = property(_get_balance) 
+      
       
 class  Transaction(models.Model):
     payer = models.ForeignKey(BankAccount, 

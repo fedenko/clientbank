@@ -19,17 +19,17 @@ class AccountListSink(VerticalPanel):
                                
         self.remote = DataService(['getaccounts'])        
                                
-        self.grid = Grid(1, 2,
+        self.grid = Grid(1, 3,
                     BorderWidth=1,
                     CellPadding=4,
                     CellSpacing=1,
                     StyleName="grid")
         self.grid.setText(0, 0, u"Number")
         self.grid.setText(0, 1, u"Type")
+        self.grid.setText(0, 2, u"Balance")
         
-        formatter = self.grid.getCellFormatter()
-        formatter.setStyleName(0, 0, "grid-header")
-        formatter.setStyleName(0, 1, "grid-header")
+        formatter = self.grid.getRowFormatter()
+        formatter.setStyleName(0, "grid-header")
         
         self.add(Label(u"Accounts"))
         
@@ -38,7 +38,7 @@ class AccountListSink(VerticalPanel):
     def updateGrid(self, accounts):         
         rows = len(accounts)
         if rows > 0:
-            self.grid.resize(rows+1, 2)
+            self.grid.resize(rows+1, 3)
             for row in range(rows):
                 link = Label(text=accounts[row]['number'],
                              StyleName="pseudo-link",
@@ -46,6 +46,7 @@ class AccountListSink(VerticalPanel):
                 link.addClickListener(self.onClick)
                 self.grid.setWidget(row+1, 0, link)
                 self.grid.setText(row+1, 1, accounts[row]['type'])
+                self.grid.setText(row+1, 2, accounts[row]['balance'])
                 
     def onShow(self):
         self.remote.getaccounts(self)
