@@ -26205,7 +26205,7 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 		var $cls_instance = $pyjs__class_instance('AccountListSink');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '39d27d511127cbc69447bbf611a4b8a8';
+		$cls_definition.__md5__ = '0130b350720d955cdb433a9bb0c95e6a';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(hendler) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -26217,12 +26217,12 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 			var $attr1,formatter,$attr2;
 			$pyjs_kwargs_call(AccountListSink['VerticalPanel'], '__init__', null, null, [{Width:String('100%'), Spacing:5}, self]);
 			self.remote = AccountListSink['DataService'](pyjslib['list']([String('getaccounts')]));
-			self.grid = $pyjs_kwargs_call(null, AccountListSink['Grid'], null, null, [{BorderWidth:1, CellPadding:4, CellSpacing:1, StyleName:String('grid')}, 1, 2]);
+			self.grid = $pyjs_kwargs_call(null, AccountListSink['Grid'], null, null, [{BorderWidth:1, CellPadding:4, CellSpacing:1, StyleName:String('grid')}, 1, 3]);
 			self['grid']['setText'](0, 0, String('Number'));
 			self['grid']['setText'](0, 1, String('Type'));
-			formatter = self['grid']['getCellFormatter']();
-			formatter['setStyleName'](0, 0, String('grid-header'));
-			formatter['setStyleName'](0, 1, String('grid-header'));
+			self['grid']['setText'](0, 2, String('Balance'));
+			formatter = self['grid']['getRowFormatter']();
+			formatter['setStyleName'](0, String('grid-header'));
 			self['add'](AccountListSink['Label'](String('Accounts')));
 			self['add'](((($attr1=self['grid']) !== null & ($attr2=self).__is_instance__) && typeof $attr1 == 'function'?
 						pyjslib['getattr']($attr2, 'grid'):
@@ -26238,12 +26238,12 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 				var self = arguments[0];
 				accounts = arguments[1];
 			}
-			var rows,$iter1_nextval,$iter1_type,$add6,$attr4,$iter1_iter,$add2,$add3,$add1,$iter1_array,$add4,$add5,link,row,$attr3,$iter1_idx;
+			var rows,$iter1_nextval,$iter1_type,$add6,$attr4,$iter1_iter,$add2,$add3,$add7,$add1,$iter1_array,$add4,$add5,link,$add8,row,$attr3,$iter1_idx;
 			rows = pyjslib['len'](accounts);
 			if (pyjslib['bool']((pyjslib['cmp'](rows, 0) == 1))) {
 				self['grid']['resize']((typeof ($add1=rows)==typeof ($add2=1) && (typeof $add1=='number'||typeof $add1=='string')?
 					$add1+$add2:
-					pyjslib['op_add']($add1,$add2)), 2);
+					pyjslib['op_add']($add1,$add2)), 3);
 				$iter1_iter = pyjslib['range'](rows);
 				if (typeof ($iter1_array = $iter1_iter.__array) != 'undefined') {
 					$iter1_type = 0;
@@ -26264,6 +26264,9 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 					self['grid']['setText']((typeof ($add5=row)==typeof ($add6=1) && (typeof $add5=='number'||typeof $add5=='string')?
 						$add5+$add6:
 						pyjslib['op_add']($add5,$add6)), 1, accounts.__getitem__(row).__getitem__(String('type')));
+					self['grid']['setText']((typeof ($add7=row)==typeof ($add8=1) && (typeof $add7=='number'||typeof $add7=='string')?
+						$add7+$add8:
+						pyjslib['op_add']($add7,$add8)), 2, accounts.__getitem__(row).__getitem__(String('balance')));
 				}
 			}
 			return null;
