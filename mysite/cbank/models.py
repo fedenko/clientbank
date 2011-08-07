@@ -35,8 +35,8 @@ class BankAccount(models.Model):
     
     def __unicode__(self):
         return "%s (%s, %s)" % (self.number,
-                               self.get_accounttype_display(),
-                               self.user.username)
+                                self.get_accounttype_display(),
+                                self.user.username)
                                
     def _get_balance(self):
         as_payer = self.transaction_as_payer_set.all().values('value')
