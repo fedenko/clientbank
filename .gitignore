@@ -1,4 +1,5 @@
 *.pyc
+*.mo
 mysite/cbank.db
+mysite/cbank/media/output/*
 mysite/templates/*
-
