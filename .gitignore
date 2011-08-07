@@ -1,4 +1,3 @@
-.gitignore
 *.pyc
 *.mo
 mysite/cbank.db
