@@ -21,7 +21,8 @@ class ClientBank:
                                                         
         self.loginpanel = LoginPanel(self)              
         self.registerpanel = RegisterPanel(self)        
-        self.dashboardpanel = DashboardPanel(self)      
+        self.dashboardpanel = DashboardPanel(self)
+              
         self.remote.isauthenticated(self)
         
     def onLogin(self, sender):
