@@ -7,10 +7,14 @@ from pyjamas.ui.PasswordTextBox import PasswordTextBox
 from pyjamas.ui.Button import Button
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas import Window
+from pyjamas.django.Form import Form
+from pyjamas import log
+
+from pyjamas.Cookies import getCookie
 
 from __pyjamas__ import JS
 
-from DataService import DataService
+from DataService import DataService, FormService
 
 class RegisterPanel(VerticalPanel):
     def __init__(self, listener):
@@ -23,8 +27,8 @@ class RegisterPanel(VerticalPanel):
                                
         self.listener = listener
                                
-        self.remote = DataService(['register'])                 
-                               
+        self.remote = DataService(['register'])
+        
         vpanel = VerticalPanel(Spacing=5) 
         
         grid = Grid(3, 2,
@@ -65,6 +69,22 @@ class RegisterPanel(VerticalPanel):
         vpanel.add(hpanel)
                      
         self.add(vpanel)
+        
+    def onShow(self):
+        self.onFormLoad()
+                
+    def onFormLoad(self):
+        self.formsvc = FormService(['usercreationform'])
+        
+        self.form = Form(getattr(self.formsvc, "usercreationform"), data = None,
+                         listener=self)
+        self.add(self.form)
+        
+    def onErrors(self, form, response):
+        log.writebr("onErrors %s" % repr(response))
+        
+    def onRetrieveDone(self, form):
+        log.writebr("onRetrieveDone: %s" % repr(form))
                 
         
     def onSubmitButtonClick(self, sender):

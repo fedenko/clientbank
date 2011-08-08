@@ -1,18 +1,17 @@
 # -*- coding: UTF-8 -*-
 from django.contrib import auth
-
 from django.utils.translation import ugettext as _
-
 from django.http import HttpResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render_to_response
-from cbank.jsonrpc import JSONRPCService, jsonremote #, FormProcessor
 
+from cbank.jsonrpc import JSONRPCService, jsonremote, FormProcessor
+from cbank.forms import ExtUserCreationForm
 from cbank.models import BankAccount
 
 service = JSONRPCService()
 
-#formservice = FormProcessor({})
+formservice = FormProcessor({'usercreationform': ExtUserCreationForm})
 
 def index(request):
     get_token(request)

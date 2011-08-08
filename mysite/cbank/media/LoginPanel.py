@@ -53,8 +53,9 @@ class LoginPanel(VerticalPanel):
         hpanel = HorizontalPanel(Width="100%")
         
         register_button = Button(JS('gettext("Create an account")'),
-                                    self.onRegisterButtonClick)
-        submit_button = Button("Login", self.onSubmitButtonClick)
+                                 self.onRegisterButtonClick)
+        submit_button = Button(JS('gettext("Login")'),
+                               self.onSubmitButtonClick)
         
         hpanel.add(register_button)
         hpanel.add(submit_button)        
