@@ -7,6 +7,11 @@ body {
   font-family: sans-serif;
 }
 
+.error-message {
+  color: red;
+  font-size: smaller;
+}
+
 .gwt-MenuBar {
   background-color: #EEEEFF;
   border: 1px solid #AAAAAA;

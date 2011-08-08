@@ -25,7 +25,9 @@ class LoginPanel(VerticalPanel):
                                
         self.remote = DataService(['login'])                 
                                
-        vpanel = VerticalPanel(Spacing=5) 
+        vpanel = VerticalPanel(Spacing=5)
+        
+        self.error_message = Label(StyleName = "error-message", Width = "300px") 
         
         grid = Grid(2, 2,
                     BorderWidth=0,
@@ -45,6 +47,7 @@ class LoginPanel(VerticalPanel):
         formatter.setAlignment(1, 0, hAlign = HasAlignment.ALIGN_RIGHT)
         
         vpanel.add(Label(JS('gettext("User Login")')))
+        vpanel.add(self.error_message)
         vpanel.add(grid)
         
         hpanel = HorizontalPanel(Width="100%")
@@ -63,6 +66,9 @@ class LoginPanel(VerticalPanel):
                                                   
              
         self.add(vpanel)
+        
+    def onShow(self, sender):
+        self.error_message.setText("")
                 
     def onRegisterButtonClick(self, sender):
         self.listener.onRegister(self)
@@ -75,11 +81,10 @@ class LoginPanel(VerticalPanel):
         Called when a response is received from a RPC.
         '''
         if request_info.method == 'login':
-            if response == True:
+            if response['success']:
                 self.listener.onLogin(self)
             else:
-                #TODO
-                Window.alert(response)
+                self.error_message.setText(response['error_message'])
         else:
             Window.alert('Unrecognized JSONRPC method.')
             

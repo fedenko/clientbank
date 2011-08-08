@@ -24,11 +24,15 @@ def login(request, username, password):
     if user is not None:
         if user.is_active:
             auth.login(request, user)
-            return True
+            return {'success':True}
         else:
-            return _(u"Your account has been disabled!")
+            return {'success':False,
+                    'error_message': _(u"Your account has been blocked.")} 
     else:
-        return _(u"Your username and password were incorrect.")
+        return {'success':False,
+                'error_message':_(u"Please enter a correct username\
+                                    and password. Note that both fields are\
+                                    case-sensitive.")}
         
 @jsonremote(service)
 def isauthenticated(request):
