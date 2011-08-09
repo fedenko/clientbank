@@ -82,7 +82,7 @@ class FormGetGrid:
         self.sink.do_get(response)
 
     def onRemoteError(self, code, message, request_info):
-        writebr("Server Error or Invalid Response: ERROR %d" % code + " - " + message + ' - Remote method : ' + request_info.method)
+        writebr("Server Error or Invalid Response: ERROR %d" % code + " - " + str(message) + ' - Remote method : ' + request_info.method)
 
 class FormDescribeGrid:
 
@@ -101,7 +101,7 @@ class FormDescribeGrid:
         self.sink.do_describe(response)
 
     def onRemoteError(self, code, message, request_info):
-        writebr("Server Error or Invalid Response: ERROR %d" % code + " - " + message + ' - Remote method : ' + request_info.method)
+        writebr("Server Error or Invalid Response: ERROR %d" % code + " - " + str(message) + ' - Remote method : ' + request_info.method)
 
 class Form(FormPanel):
 
