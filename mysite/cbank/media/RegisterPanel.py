@@ -7,7 +7,7 @@ from pyjamas.ui.PasswordTextBox import PasswordTextBox
 from pyjamas.ui.Button import Button
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas import Window
-from pyjamas.django.Form import Form
+from DjangoForm import Form
 from pyjamas import log
 
 from pyjamas.Cookies import getCookie
