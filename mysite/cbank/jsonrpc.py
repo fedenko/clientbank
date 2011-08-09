@@ -158,7 +158,11 @@ def describe_field(field):
     res['type'] = field_type
     for fname in field_names.get(field_type, []) + \
           ['help_text', 'label', 'initial', 'required']:
-        res[fname] = getattr(field, fname)
+        field_property = getattr(field, fname)
+        if fname in ['help_text', 'label', 'initial'] and field_property != None:
+            res[fname] = unicode(field_property) # get lazy translation
+        else:    
+            res[fname] = field_property
     if field_type in ['ComboField', 'MultiValueField', 'SplitDateTimeField']:
         res['fields'] = map(describe_field, field.fields)
     return res
