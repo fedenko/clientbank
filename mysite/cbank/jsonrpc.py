@@ -3,6 +3,8 @@
 #   also from: http://www.pimentech.fr/technologies/outils
 from django.utils import simplejson
 from django.http import HttpResponse
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
 import sys
 import traceback
 
@@ -18,16 +20,22 @@ import traceback
 # dump jsonservice into urlpatterns:
 #  (r'^service1/$', 'djangoapp.views.jsonservice'),
 
+class LazyEncoder(simplejson.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return super(LazyEncoder, self).default(obj)
+
 def response(id, result):
     return HttpResponse(simplejson.dumps({'version': '1.1', 'id':id,
-                             'result':result, 'error':None}))
+                             'result':result, 'error':None}, cls=LazyEncoder) )
 def error(id, code, message):
     return HttpResponse(simplejson.dumps({'id': id, 'version': '1.1',
                              'error': {'name': 'JSONRPCError',
                                        'code': code,
                                        'message': message
                                        }
-                                 }))
+                                 }, cls=LazyEncoder))
 
 class JSONRPCService:
     def __init__(self, method_map=None):
@@ -158,11 +166,7 @@ def describe_field(field):
     res['type'] = field_type
     for fname in field_names.get(field_type, []) + \
           ['help_text', 'label', 'initial', 'required']:
-        field_property = getattr(field, fname)
-        if fname in ['help_text', 'label', 'initial'] and field_property != None:
-            res[fname] = unicode(field_property) # get lazy translation
-        else:    
-            res[fname] = field_property
+        res[fname] = getattr(field, fname)
     if field_type in ['ComboField', 'MultiValueField', 'SplitDateTimeField']:
         res['fields'] = map(describe_field, field.fields)
     return res
