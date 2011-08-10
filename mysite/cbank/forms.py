@@ -1,13 +1,14 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 
 class ExtUserCreationForm(UserCreationForm):
     """
     Extended user creation form.
     """
-    email = forms.EmailField(max_length=75)
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
+    email = forms.EmailField(label=_('E-mail address'), max_length=75)
+    first_name = forms.CharField(label=_('First name'), max_length=30)
+    last_name = forms.CharField(label=_('Last name'), max_length=30)
     
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
