@@ -48,8 +48,7 @@ class RegisterPanel(VerticalPanel):
         if not hasattr(self, 'form'):
             self.onFormLoad()
         else:
-            #self.form.clear()
-            pass
+            self.form.clear_errors()
                
     def onFormLoad(self):
         self.formsvc = FormService(['usercreationform'])
