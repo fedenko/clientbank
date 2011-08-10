@@ -3,7 +3,7 @@
     Copyright (C) 2009 Luke Kenneth Casson Leighton <lkcl@lkcl.net>
 
 """
-
+from pyjamas import DOM
 from pyjamas.ui.TextBox import TextBox
 from pyjamas.ui.Grid import Grid
 from pyjamas.ui.FormPanel import FormPanel
@@ -14,7 +14,12 @@ from pyjamas.ui.TextBox import TextBox
 
 class CharField(TextBox):
     def __init__(self, **kwargs):
-        TextBox.__init__(self)
+        if kwargs.get('input_type', 'text') == 'password':
+            if not kwargs.has_key('Element'): 
+                kwargs['Element'] = DOM.createInputPassword() 
+            if not kwargs.has_key('StyleName'): 
+                kwargs['StyleName']="gwt-PasswordTextBox" 
+        TextBox.__init__(self, **kwargs)
         self.max_length = kwargs.get('max_length', None)
         self.min_length = kwargs.get('min_length', None)
         self.required = kwargs.get('required', None)
