@@ -64,9 +64,9 @@ class FormSaveGrid:
 
         method = request_info.method
 
-        writebr(repr(response))
-        writebr("%d" % len(response))
-        writebr("%s" % repr(response.keys()))
+        #writebr(repr(response))
+        #writebr("%d" % len(response))
+        #writebr("%s" % repr(response.keys()))
 
         self.sink.save_respond(response)
 
@@ -79,10 +79,10 @@ class FormGetGrid:
 
         method = request_info.method
 
-        writebr(method)
-        writebr(repr(response))
-        writebr("%d" % len(response))
-        writebr("%s" % repr(response.keys()))
+        #writebr(method)
+        #writebr(repr(response))
+        #writebr("%d" % len(response))
+        #writebr("%s" % repr(response.keys()))
 
         self.sink.do_get(response)
 
@@ -98,10 +98,10 @@ class FormDescribeGrid:
 
         method = request_info.method
 
-        writebr(method)
-        writebr(repr(response))
-        writebr("%d" % len(response))
-        writebr("%s" % repr(response.keys()))
+        #writebr(method)
+        #writebr(repr(response))
+        #writebr("%d" % len(response))
+        #writebr("%s" % repr(response.keys()))
 
         self.sink.do_describe(response)
 
@@ -121,7 +121,7 @@ class Form(FormPanel):
             data = kwargs.pop('data')
         else:
             data = None
-        writebr(repr(data))
+        #writebr(repr(data))
 
         FormPanel.__init__(self, **kwargs)
         self.svc = svc
@@ -146,7 +146,7 @@ class Form(FormPanel):
         self.grid.setWidget(num_rows, 1, widget)
 
     def get(self, **kwargs):
-        writebr(repr(kwargs))
+        #writebr(repr(kwargs))
         self.svc({}, {'get': kwargs}, self.getter)
 
     def save(self, data=None):
@@ -154,7 +154,7 @@ class Form(FormPanel):
         if data is None:
             data = self.getValue()
         self.data = data
-        writebr(repr(self.data))
+        #writebr(repr(self.data))
         self.svc(data, {'save': None}, self.saver)
 
     def save_respond(self, response):
@@ -174,7 +174,7 @@ class Form(FormPanel):
         if data is None:
             data = {}
         self.data = data
-        writebr(repr(self.data))
+        #writebr(repr(self.data))
         self.svc(data, {'describe': None}, self.describer)
 
     def clear_errors(self):
@@ -217,7 +217,7 @@ class Form(FormPanel):
             field = fields[fname]
             if self.data and self.data.has_key(fname):
                 field['initial'] = self.data[fname]
-            writebr("%s %s %d" % (fname, field['label'], idx))
+            #writebr("%s %s %d" % (fname, field['label'], idx))
             field_type = field['type']
             widget_kls = widget_factory.get(field_type, CharField)
             fv = {}

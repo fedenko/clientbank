@@ -10,11 +10,9 @@ from pyjamas import Window
 from DjangoForm import Form
 from pyjamas import log
 
-from pyjamas.Cookies import getCookie
+from DataService import FormService
 
 from __pyjamas__ import JS
-
-from DataService import DataService, FormService
 
 class RegisterPanel(VerticalPanel):
     def __init__(self, listener):
@@ -27,87 +25,47 @@ class RegisterPanel(VerticalPanel):
                                
         self.listener = listener
                                
-        self.remote = DataService(['register'])
+        self.form_panel = VerticalPanel(Spacing=5) 
         
-        vpanel = VerticalPanel(Spacing=5) 
         
-        grid = Grid(3, 2,
-                    BorderWidth=0,
-                    CellPadding=5,
-                    CellSpacing=0)
-                
-        grid.setWidget(0, 0, Label(JS('gettext("Username:")')))
-        self.tb = TextBox(Name="username") 
-        grid.setWidget(0, 1, self.tb)
+        self.form_panel.add(Label(JS('gettext("Create an account")')))
         
-        grid.setWidget(1, 0, Label(JS('gettext("Password:")')))
-        self.ptb1 = PasswordTextBox(Name="password1")
-        grid.setWidget(1, 1, self.ptb1)
-        
-        grid.setWidget(2, 0, Label(JS('gettext("Password confirmation:")')))
-        self.ptb2 = PasswordTextBox(Name="password2")
-        grid.setWidget(2, 1, self.ptb2)
-        
-        formatter = grid.getCellFormatter()
-        
-        for row in range(3):
-            formatter.setAlignment(row, 0, hAlign = HasAlignment.ALIGN_RIGHT)
-        
-        vpanel.add(Label(JS('gettext("Create an account")')))
-        vpanel.add(grid)
-        
-        hpanel = HorizontalPanel(Width="100%")
+        button_box = HorizontalPanel(Width="100%")
         
         submit_button = Button(JS('gettext("Create the account")'), self.onSubmitButtonClick)
         cancel_button = Button(JS('gettext("Cancel")'), self.onCancelButtonClick)
         
-        hpanel.add(cancel_button)
-        hpanel.add(submit_button)
-        hpanel.setCellHorizontalAlignment(submit_button,
+        button_box.add(cancel_button)
+        button_box.add(submit_button)
+        button_box.setCellHorizontalAlignment(submit_button,
                                           HasAlignment.ALIGN_RIGHT)
         
-        vpanel.add(hpanel)
+        self.form_panel.add(button_box)
                      
-        self.add(vpanel)
+        self.add(self.form_panel)
         
     def onShow(self):
-        self.onFormLoad()
-                
+        if not hasattr(self, 'form'):
+            self.onFormLoad()
+        else:
+            #self.form.clear()
+            pass
+               
     def onFormLoad(self):
         self.formsvc = FormService(['usercreationform'])
         
         self.form = Form(getattr(self.formsvc, "usercreationform"), data = None,
                          listener=self)
-        self.add(self.form)
+        self.form_panel.insert(self.form, 1)
         
     def onErrors(self, form, response):
         log.writebr("onErrors %s" % repr(response))
         
     def onRetrieveDone(self, form):
-        log.writebr("onRetrieveDone: %s" % repr(form))
-                
-        
+        self.listener.onBackToLogin(self)
+                        
     def onSubmitButtonClick(self, sender):
-        self.remote.register(self.tb.getText(),
-                             self.ptb1.getText(),
-                             self.ptb2.getText(),
-                             self)
+        self.form.save()
                              
     def onCancelButtonClick(self, sender):
         self.listener.onBackToLogin(self)
-        
-    def onRemoteResponse(self, response, request_info):
-        '''
-        Called when a response is received from a RPC.
-        '''
-        if request_info.method == 'register':
-            if response == True:
-                self.listener.onBackToLogin(self)
-            else:
-                #TODO
-                Window.alert(response)
-        else:
-            Window.alert(JS('gettext("Unrecognized JSONRPC method.")'))
-            
-    def onRemoteError(self, code, message, request_info):
-        Window.alert(message)
