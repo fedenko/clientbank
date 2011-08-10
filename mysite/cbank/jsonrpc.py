@@ -165,14 +165,17 @@ def describe_field(field):
     field_type = field.__class__.__name__
     res['type'] = field_type
     for fname in field_names.get(field_type, []) + \
-          ['help_text', 'label', 'initial', 'required']:
-        res[fname] = getattr(field, fname)
+          ['help_text', 'label', 'initial', 'required', 'widget']:
+        if fname =='widget':
+            res['input_type'] = getattr(field, fname).input_type
+        else:
+            res[fname] = getattr(field, fname)
     if field_type in ['ComboField', 'MultiValueField', 'SplitDateTimeField']:
         res['fields'] = map(describe_field, field.fields)
     return res
 
 def describe_fields(fields, field_names):
-    res = {}
+    res = simplejson.OrderedDict({})
     if not field_names:
         field_names = fields.keys()
     for name in field_names:
