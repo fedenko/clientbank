@@ -1,4 +1,4 @@
-# Django settings for mysite project.
+# Django settings for clientbank project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -76,7 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'clientbank.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
