@@ -1,10 +1,14 @@
 # Django settings for clientbank project.
 
+import os
+
 try:
     from localsettings import *
 except ImportError:
     pass
+    
 
+STATIC = str(os.path.join(os.path.dirname(__file__), 'media/output').replace('\\','/'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -88,8 +92,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'templates',
-    'cbank/media/output'
+    STATIC,
 )
 
 INSTALLED_APPS = (

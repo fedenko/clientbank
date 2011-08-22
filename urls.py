@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
 from django.contrib.auth.views import login, logout
 
 # Uncomment the next two lines to enable the admin:
@@ -22,5 +23,5 @@ urlpatterns = patterns('',
     (r'^services/$', 'cbank.views.service'),
     (r'^formservice/$', 'cbank.views.formservice'),
     (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
-    (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'cbank/media/output'}),    
+    (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC}),    
 )
