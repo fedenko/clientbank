@@ -7,12 +7,11 @@ from pyjamas.ui.PasswordTextBox import PasswordTextBox
 from pyjamas.ui.Button import Button
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas import Window
-from DjangoForm import Form
-from pyjamas import log
+from __pyjamas__ import JS, console
 
+from DjangoForm import Form
 from DataService import FormService
 
-from __pyjamas__ import JS
 
 class RegisterPanel(VerticalPanel):
     def __init__(self, listener):
@@ -52,7 +51,7 @@ class RegisterPanel(VerticalPanel):
         self.form_panel.insert(self.form, 1)
         
     def onErrors(self, form, response):
-        log.writebr("onErrors %s" % repr(response))
+        console.log("onErrors %s" % repr(response))
         
     def onRetrieveDone(self, form):
         self.listener.onBackToLogin(self)
