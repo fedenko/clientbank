@@ -16,17 +16,11 @@ from __pyjamas__ import JS
 
 class RegisterPanel(VerticalPanel):
     def __init__(self, listener):
-        VerticalPanel.__init__(self,
-                               HorizontalAlignment=HasAlignment.ALIGN_CENTER,
-                               VerticalAlignment=HasAlignment.ALIGN_MIDDLE,
-                               Width="100%",
-                               Height="95%",
-                               Spacing=5)
+        VerticalPanel.__init__(self, StyleName = "register")
                                
         self.listener = listener
                                
-        self.form_panel = VerticalPanel(Spacing=5) 
-        
+        self.form_panel = VerticalPanel(ID = "container", StyleName = "form")         
         
         self.form_panel.add(Label(JS('gettext("Create an account")')))
         

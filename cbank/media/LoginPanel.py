@@ -14,59 +14,51 @@ from __pyjamas__ import JS
 
 class LoginPanel(VerticalPanel):
     def __init__(self, listener):
-        VerticalPanel.__init__(self,
-                               HorizontalAlignment=HasAlignment.ALIGN_CENTER,
-                               VerticalAlignment=HasAlignment.ALIGN_MIDDLE,
-                               Width="100%",
-                               Height="95%",
-                               Spacing=5)
+        VerticalPanel.__init__(self, StyleName = "login")
                                
         self.listener = listener
                                
         self.remote = DataService(['login'])                 
                                
-        vpanel = VerticalPanel(Spacing=5)
+        form_panel = VerticalPanel(ID = "container", StyleName = "form")
         
-        self.error_message = Label(StyleName = "error-message", Width = "300px") 
+        self.error_message = Label(StyleName = "error-message") 
         
         grid = Grid(2, 2,
-                    BorderWidth=0,
-                    CellPadding=5,
-                    CellSpacing=0)
+                    CellPadding=0,
+                    CellSpacing=0,
+                    StyleName = "form-grid")
                 
-        grid.setWidget(0, 0, Label(JS('gettext("Username:")')))
+        grid.setWidget(0, 0, Label(JS('gettext("Username:")'),
+                                   StyleName = "label"))
         self.tb = TextBox(Name="username") 
         grid.setWidget(0, 1, self.tb)
         
-        grid.setWidget(1, 0, Label(JS('gettext("Password:")')))
+        grid.setWidget(1, 0, Label(JS('gettext("Password:")'),
+                                   StyleName = "label"))
         self.ptb = PasswordTextBox(Name="password")
         grid.setWidget(1, 1, self.ptb)
         
-        formatter = grid.getCellFormatter()
-        formatter.setAlignment(0, 0, hAlign = HasAlignment.ALIGN_RIGHT)
-        formatter.setAlignment(1, 0, hAlign = HasAlignment.ALIGN_RIGHT)
+        form_panel.add(Label(JS('gettext("User Login")'), StyleName = "form-title"))
+        form_panel.add(self.error_message)
+        form_panel.add(grid)
         
-        vpanel.add(Label(JS('gettext("User Login")')))
-        vpanel.add(self.error_message)
-        vpanel.add(grid)
-        
-        hpanel = HorizontalPanel(Width="100%")
+        button_box = HorizontalPanel(Width="100%")
         
         register_button = Button(JS('gettext("Create an account")'),
                                  self.onRegisterButtonClick)
         submit_button = Button(JS('gettext("Login")'),
                                self.onSubmitButtonClick)
         
-        hpanel.add(register_button)
-        hpanel.add(submit_button)        
+        button_box.add(register_button)
+        button_box.add(submit_button)        
         
-        hpanel.setCellHorizontalAlignment(submit_button,
+        button_box.setCellHorizontalAlignment(submit_button,
                                           HasAlignment.ALIGN_RIGHT)
         
-        vpanel.add(hpanel)
-                                                  
+        form_panel.add(button_box)
              
-        self.add(vpanel)
+        self.add(form_panel)
         
     def onShow(self, sender):
         self.error_message.setText("")
