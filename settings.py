@@ -1,5 +1,11 @@
 # Django settings for clientbank project.
 
+try:
+    from localsettings import *
+except ImportError:
+    pass
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

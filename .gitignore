@@ -1,5 +1,0 @@
-*.pyc
-*.mo
-cbank.db
-cbank/media/output/*
-templates/*
