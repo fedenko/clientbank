@@ -2,12 +2,6 @@
 
 import os
 
-try:
-    from localsettings import *
-except ImportError:
-    pass
-    
-
 STATIC = str(os.path.join(os.path.dirname(__file__), 'media/output').replace('\\','/'))
 
 DEBUG = True
@@ -109,3 +103,10 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = "cbank.UserProfile"
+
+# Import local settings
+# http://stackoverflow.com/questions/4909958/django-local-settings
+try:
+    from local_settings import *
+except ImportError:
+    pass
