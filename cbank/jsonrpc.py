@@ -5,6 +5,7 @@ from django.utils import simplejson
 from django.http import HttpResponse
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
+from django.utils.datastructures import SortedDict
 import sys
 import traceback
 
@@ -175,7 +176,7 @@ def describe_field(field):
     return res
 
 def describe_fields(fields, field_names):
-    res = simplejson.OrderedDict({})
+    res = SortedDict()
     if not field_names:
         field_names = fields.keys()
     for name in field_names:
