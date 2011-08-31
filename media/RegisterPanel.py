@@ -47,7 +47,7 @@ class RegisterPanel(VerticalPanel):
         self.formsvc = FormService(['usercreationform'])
         
         self.form = Form(getattr(self.formsvc, "usercreationform"), data = None,
-                         listener=self)
+                         listener=self, StyleName = "uniForm")
         self.form_panel.insert(self.form, 1)
         
     def onErrors(self, form, response):

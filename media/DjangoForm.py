@@ -8,7 +8,103 @@ from pyjamas.ui.TextBox import TextBox
 from pyjamas.ui.Grid import Grid
 from pyjamas.ui.FormPanel import FormPanel
 #from pyjamas.ui.Composite import Composite
+from pyjamas.ui.FlowPanel import FlowPanel
+from pyjamas.ui.Label import Label
 from __pyjamas__ import console
+
+
+class FormLabel(Label):
+    def __init__(self, text=None, forid=None, wordWrap=True, **kwargs):
+        if not kwargs.has_key('Element'):
+            element = DOM.createLabel()
+            if forid: 
+                element.setAttribute("for", forid)
+            kwargs['Element'] = element
+        Label.__init__(self, text, wordWrap, **kwargs)
+        
+class ErrorLabel(Label):
+    def __init__(self, text=None, wordWrap=True, **kwargs):
+        if not kwargs.has_key('Element'):
+            kwargs['Element'] = DOM.createElement('p')
+        if not kwargs.has_key('StyleName'):
+            kwargs['StyleName'] = "errorField"
+        Label.__init__(self, text, wordWrap, **kwargs)
+        
+class CtrlHolder(FlowPanel):
+    def __init__(self, name, description, widget, **kwargs):
+        if not kwargs.has_key('StyleName'):
+            kwargs['StyleName'] = "ctrlHolder"
+        if not kwargs.has_key('ID'):
+            kwargs['ID'] = "div_id_%s" % name
+        FlowPanel.__init__(self, **kwargs)
+        
+        self.errors = []
+        
+        self.label = FormLabel(description, "id_%s" % name)
+        self.widget = widget
+        self.widget.setID("id_%s" % name)
+        self.widget.setName(name)
+            
+        self.add(self.label)
+        self.add(self.widget)
+        
+    def insert(self, widget, beforeIndex):
+        if widget.getParent() == self: 
+            return
+            
+        widget.removeFromParent()            
+        DOM.insertChild(self.getElement(), widget.getElement(), beforeIndex)        
+        widget.setParent(self)
+        self.children.insert(beforeIndex, widget)
+        
+    def getValue(self):
+        return self.widget.getValue()
+        
+    def setValue(self, val):
+        self.widget.setValue(val)
+            
+    def setErrors(self, errors):
+        for error in self.errors:
+            self.remove(error)
+            self.errors.remove(error)
+            
+        if errors:
+            errors.reverse()
+            for err in errors:
+                w = ErrorLabel(err)
+                self.errors.append(w)
+                self.insert(w, 0)
+
+class FieldSet(FlowPanel):
+    def __init__(self, **kwargs):
+        if not kwargs.has_key('Element'):
+            kwargs['Element'] = DOM.createElement('fieldset')
+        self.fields = {}
+        FlowPanel.__init__(self, **kwargs)
+        
+    def addField(self, name, description, widget):
+        if not self.fields.has_key(name):
+            self.fields[name] = CtrlHolder(name, description, widget)
+            self.add(self.fields[name])
+            
+    def removeField(self, fname):
+        if self.fields.has_key(fname):
+            self.remove(self.fields[fname])
+            del self.fields[fname]
+            
+    def getValue(self, fname):
+        if self.fields.has_key(fname):
+            return self.fields[fname].getValue()
+        else:
+            return None
+        
+    def setValue(self, fname, val):
+        if self.fields.has_key(fname):
+            self.fields[fname].setValue(val)
+        
+    def setErrors(self, fname, errors=None):
+        if self.fields.has_key(fname):
+            self.fields[fname].setErrors(errors)
 
 
 class CharField(TextBox):
@@ -16,8 +112,10 @@ class CharField(TextBox):
         if kwargs.get('input_type', 'text') == 'password':
             if not kwargs.has_key('Element'): 
                 kwargs['Element'] = DOM.createInputPassword() 
-            if not kwargs.has_key('StyleName'): 
-                kwargs['StyleName']="gwt-PasswordTextBox" 
+            #if not kwargs.has_key('StyleName'): 
+            #    kwargs['StyleName']="gwt-PasswordTextBox"
+        if not kwargs.has_key('StyleName'): 
+            kwargs['StyleName']="textInput"
         TextBox.__init__(self, **kwargs)
         self.max_length = kwargs.get('max_length', None)
         self.min_length = kwargs.get('min_length', None)
@@ -54,7 +152,7 @@ widget_factory = {'CharField': CharField,
                   'FloatField': FloatField
                  }
 
-class FormSaveGrid:
+class FormSavePanel:
 
     def __init__(self, sink):
         self.sink = sink
@@ -69,7 +167,7 @@ class FormSaveGrid:
 
         self.sink.save_respond(response)
 
-class FormGetGrid:
+class FormGetPanel:
 
     def __init__(self, sink):
         self.sink = sink
@@ -88,7 +186,7 @@ class FormGetGrid:
     def onRemoteError(self, code, message, request_info):
         console.log("Server Error or Invalid Response: ERROR %d" % code + " - " + str(message) + ' - Remote method : ' + request_info.method)
 
-class FormDescribeGrid:
+class FormDescribePanel:
 
     def __init__(self, sink):
         self.sink = sink
@@ -124,25 +222,15 @@ class Form(FormPanel):
 
         FormPanel.__init__(self, **kwargs)
         self.svc = svc
-        self.grid = Grid()
-        self.grid.resize(0, 3)
-        self.add(self.grid)
-        self.describer = FormDescribeGrid(self)
-        self.saver = FormSaveGrid(self)
-        self.getter = FormGetGrid(self)
+        self.fieldset = FieldSet(StyleName = "inlineLabels")
+        self.add(self.fieldset)
+        self.describer = FormDescribePanel(self)
+        self.saver = FormSavePanel(self)
+        self.getter = FormGetPanel(self)
         self.formsetup(data)
 
     def addDescribeListener(self, l):
         self.describe_listeners.append(l)
-
-    def add_widget(self, description, widget):
-        """ adds a widget, with error rows interspersed
-        """
-
-        num_rows = self.grid.getRowCount()
-        self.grid.resize((num_rows+1), 3)
-        self.grid.setHTML(num_rows, 0, description)
-        self.grid.setWidget(num_rows, 1, widget)
 
     def get(self, **kwargs):
         console.log(repr(kwargs))
@@ -177,30 +265,22 @@ class Form(FormPanel):
         self.svc(data, {'describe': None}, self.describer)
 
     def clear_errors(self):
-
-        for idx, fname in enumerate(self.fields):
-            self.grid.setHTML(idx, 2, None)
+        for fname in self.fields:
+            self.fieldset.setErrors(fname, None)
             
     def set_errors(self, errors):
-
-        offsets = {}
-        for idx, fname in enumerate(self.fields):
-            offsets[fname] = idx
-        for k, err in errors.items():
-            err = "<br />".join(err)
-            idx = offsets[k]
-            self.grid.setHTML(idx, 2, err)
+        for fname, err in errors.items():
+            self.fieldset.setErrors(fname, err)
             
     def update_values(self, data = None):
         if data is not None:
             self.data = data
 
-        for idx, fname in enumerate(self.fields):
+        for fname in self.fields:
             val = None
             if self.data.has_key(fname):
                 val = self.data[fname]
-            w = self.grid.getWidget(idx, 1)
-            w.setValue(val)
+            self.fieldset.setValue(fname, val)
 
     def do_get(self, response):
         fields = response.get('instance', None)
@@ -223,7 +303,7 @@ class Form(FormPanel):
             for (k, v) in field.items():
                 fv[str(k)] = v
             w = widget_kls(**fv)
-            self.add_widget(field['label'], w)
+            self.fieldset.addField(fname, field['label'], w)
 
         for l in self.describe_listeners:
             l.onDescribeDone(self)
@@ -231,9 +311,8 @@ class Form(FormPanel):
     def getValue(self):
 
         res = {}
-        for idx, fname in enumerate(self.fields):
-            w = self.grid.getWidget(idx, 1)
-            val = w.getValue()
+        for fname in self.fields:
+            val = self.fieldset.getValue(fname)
             res[fname] = val
             self.data[fname] = val
 

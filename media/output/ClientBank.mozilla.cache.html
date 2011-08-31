@@ -2252,6 +2252,112 @@ PYJS_DEPS: ['sys', 'pyjamas.Factory', 'pyjamas', 'pyjamas.DOM', 'pyjamas.Window'
 
 --></script>
 <script type="text/javascript"><!--
+/* start module: pyjamas.ui.FlowPanel */
+$pyjs.loaded_modules['pyjamas.ui.FlowPanel'] = function (__mod_name__) {
+	if($pyjs.loaded_modules['pyjamas.ui.FlowPanel'].__was_initialized__) return $pyjs.loaded_modules['pyjamas.ui.FlowPanel'];
+	if(typeof $pyjs.loaded_modules['pyjamas.ui'] == 'undefined' || !$pyjs.loaded_modules['pyjamas.ui'].__was_initialized__) pyjslib['___import___']('pyjamas.ui', null);
+	pyjamas['ui']['FlowPanel'] = $pyjs.loaded_modules["pyjamas.ui.FlowPanel"];
+	pyjamas['ui']['FlowPanel'].__was_initialized__ = true;
+	if ((__mod_name__ === null) || (typeof __mod_name__ == 'undefined')) __mod_name__ = 'pyjamas.ui.FlowPanel';
+	var __name__ = pyjamas['ui']['FlowPanel'].__name__ = __mod_name__;
+	var FlowPanel = pyjamas['ui']['FlowPanel'];
+
+
+	pyjamas['ui']['FlowPanel']['DOM'] = pyjslib['___import___']('pyjamas.DOM', 'pyjamas.ui', null, false);
+	pyjamas['ui']['FlowPanel']['Factory'] = pyjslib['___import___']('pyjamas.Factory', 'pyjamas.ui', null, false);
+	pyjamas['ui']['FlowPanel']['ComplexPanel'] = pyjslib['___import___']('ComplexPanel.ComplexPanel', 'pyjamas.ui', null, false);
+	pyjamas['ui']['FlowPanel']['FlowPanel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FlowPanel');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = '91f740592fdd523ae0c2190c5273df21';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function() {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 1 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				var kwargs = arguments.length >= 2 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[1];
+					}
+				} else {
+				}
+			}
+			var element;
+			element = null;
+			if (pyjslib['bool'](kwargs['has_key'](String('Element')))) {
+				element = kwargs['pop'](String('Element'));
+			}
+			if (pyjslib['bool']((element === null))) {
+				element = pyjamas['ui']['FlowPanel']['DOM']['createDiv']();
+			}
+			self['setElement'](element);
+			$pyjs_kwargs_call(pyjamas['ui']['FlowPanel']['ComplexPanel'], '__init__', null, kwargs, [{}, self]);
+			return null;
+		}
+	, 1, [null,['kwargs'],['self']]);
+		$cls_definition['__init__'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'add', function(w) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				w = arguments[1];
+			}
+
+			pyjamas['ui']['FlowPanel']['ComplexPanel']['add'](self, w, self['getElement']());
+			return null;
+		}
+	, 1, [null,null,['self'],['w']]);
+		$cls_definition['add'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'remove', function(index) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				index = arguments[1];
+			}
+
+			if (pyjslib['bool'](pyjslib['isinstance'](index, pyjslib['float_int']))) {
+				index = self['getWidget'](index);
+			}
+			return pyjamas['ui']['FlowPanel']['ComplexPanel']['remove'](self, index);
+		}
+	, 1, [null,null,['self'],['index']]);
+		$cls_definition['remove'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(pyjamas['ui']['FlowPanel']['ComplexPanel']));
+	})();
+	pyjamas['ui']['FlowPanel']['Factory']['registerClass'](String('pyjamas.ui.FlowPanel'), pyjamas['ui']['FlowPanel']['FlowPanel']);
+	return this;
+}; /* end pyjamas.ui.FlowPanel */
+
+
+/* end module: pyjamas.ui.FlowPanel */
+
+
+/*
+PYJS_DEPS: ['pyjamas.DOM', 'pyjamas', 'pyjamas.Factory', 'ComplexPanel.ComplexPanel', 'ComplexPanel']
+*/
+
+--></script>
+<script type="text/javascript"><!--
 /* start module: math */
 var math;
 $pyjs.loaded_modules['math'] = function (__mod_name__) {
@@ -11709,11 +11815,453 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 	DjangoForm['TextBox'] = pyjslib['___import___']('pyjamas.ui.TextBox.TextBox', null, null, false);
 	DjangoForm['Grid'] = pyjslib['___import___']('pyjamas.ui.Grid.Grid', null, null, false);
 	DjangoForm['FormPanel'] = pyjslib['___import___']('pyjamas.ui.FormPanel.FormPanel', null, null, false);
+	DjangoForm['FlowPanel'] = pyjslib['___import___']('pyjamas.ui.FlowPanel.FlowPanel', null, null, false);
+	DjangoForm['Label'] = pyjslib['___import___']('pyjamas.ui.Label.Label', null, null, false);
+	DjangoForm['FormLabel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FormLabel');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = '618e41da2f2b281627e9de34f84f7efa';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function(text, forid, wordWrap) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 4 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				text = arguments[1];
+				forid = arguments[2];
+				wordWrap = arguments[3];
+				var kwargs = arguments.length >= 5 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof wordWrap != 'undefined') {
+					if (wordWrap !== null && typeof wordWrap['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = wordWrap;
+						wordWrap = arguments[4];
+					}
+				} else 				if (typeof forid != 'undefined') {
+					if (forid !== null && typeof forid['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = forid;
+						forid = arguments[4];
+					}
+				} else 				if (typeof text != 'undefined') {
+					if (text !== null && typeof text['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = text;
+						text = arguments[4];
+					}
+				} else 				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[4];
+					}
+				} else {
+				}
+			}
+			if (typeof text == 'undefined') text=arguments.callee.__args__[3][1];
+			if (typeof forid == 'undefined') forid=arguments.callee.__args__[4][1];
+			if (typeof wordWrap == 'undefined') wordWrap=arguments.callee.__args__[5][1];
+			var element;
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('Element'))))) {
+				element = DjangoForm['DOM']['createLabel']();
+				if (pyjslib['bool'](forid)) {
+					element['setAttribute'](String('for'), forid);
+				}
+				kwargs.__setitem__(String('Element'), element);
+			}
+			$pyjs_kwargs_call(DjangoForm['Label'], '__init__', null, kwargs, [{}, self, text, wordWrap]);
+			return null;
+		}
+	, 1, [null,['kwargs'],['self'],['text', null],['forid', null],['wordWrap', true]]);
+		$cls_definition['__init__'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(DjangoForm['Label']));
+	})();
+	DjangoForm['ErrorLabel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('ErrorLabel');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = '03694141f65fcf9dd93a95aec5a16e31';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function(text, wordWrap) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 3 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				text = arguments[1];
+				wordWrap = arguments[2];
+				var kwargs = arguments.length >= 4 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof wordWrap != 'undefined') {
+					if (wordWrap !== null && typeof wordWrap['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = wordWrap;
+						wordWrap = arguments[3];
+					}
+				} else 				if (typeof text != 'undefined') {
+					if (text !== null && typeof text['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = text;
+						text = arguments[3];
+					}
+				} else 				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[3];
+					}
+				} else {
+				}
+			}
+			if (typeof text == 'undefined') text=arguments.callee.__args__[3][1];
+			if (typeof wordWrap == 'undefined') wordWrap=arguments.callee.__args__[4][1];
+
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('Element'))))) {
+				kwargs.__setitem__(String('Element'), DjangoForm['DOM']['createElement'](String('p')));
+			}
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('StyleName'))))) {
+				kwargs.__setitem__(String('StyleName'), String('errorField'));
+			}
+			$pyjs_kwargs_call(DjangoForm['Label'], '__init__', null, kwargs, [{}, self, text, wordWrap]);
+			return null;
+		}
+	, 1, [null,['kwargs'],['self'],['text', null],['wordWrap', true]]);
+		$cls_definition['__init__'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(DjangoForm['Label']));
+	})();
+	DjangoForm['CtrlHolder'] = (function(){
+		var $cls_instance = $pyjs__class_instance('CtrlHolder');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = '82699e3233446fef621d831799554004';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function(name, description, widget) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 4 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				name = arguments[1];
+				description = arguments[2];
+				widget = arguments[3];
+				var kwargs = arguments.length >= 5 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof widget != 'undefined') {
+					if (widget !== null && typeof widget['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = widget;
+						widget = arguments[4];
+					}
+				} else 				if (typeof description != 'undefined') {
+					if (description !== null && typeof description['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = description;
+						description = arguments[4];
+					}
+				} else 				if (typeof name != 'undefined') {
+					if (name !== null && typeof name['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = name;
+						name = arguments[4];
+					}
+				} else 				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[4];
+					}
+				} else {
+				}
+			}
+			var $attr1,$attr2,$attr4,$attr3;
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('StyleName'))))) {
+				kwargs.__setitem__(String('StyleName'), String('ctrlHolder'));
+			}
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('ID'))))) {
+				kwargs.__setitem__(String('ID'), pyjslib['sprintf'](String('div_id_%s'), name));
+			}
+			$pyjs_kwargs_call(DjangoForm['FlowPanel'], '__init__', null, kwargs, [{}, self]);
+			self.errors = pyjslib['list']([]);
+			self.$$label = DjangoForm['FormLabel'](description, pyjslib['sprintf'](String('id_%s'), name));
+			self.widget = widget;
+			self['widget']['setID'](pyjslib['sprintf'](String('id_%s'), name));
+			self['widget']['setName'](name);
+			self['add'](((($attr1=self['$$label']) !== null & ($attr2=self).__is_instance__) && typeof $attr1 == 'function'?
+						pyjslib['getattr']($attr2, '$$label'):
+						self['$$label']));
+			self['add'](((($attr3=self['widget']) !== null & ($attr4=self).__is_instance__) && typeof $attr3 == 'function'?
+						pyjslib['getattr']($attr4, 'widget'):
+						self['widget']));
+			return null;
+		}
+	, 1, [null,['kwargs'],['self'],['name'],['description'],['widget']]);
+		$cls_definition['__init__'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'insert', function(widget, beforeIndex) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				widget = arguments[1];
+				beforeIndex = arguments[2];
+			}
+
+			if (pyjslib['bool'](pyjslib['op_eq'](widget['getParent'](), self))) {
+				return null;
+			}
+			widget['removeFromParent']();
+			DjangoForm['DOM']['insertChild'](self['getElement'](), widget['getElement'](), beforeIndex);
+			widget['setParent'](self);
+			self['children']['insert'](beforeIndex, widget);
+			return null;
+		}
+	, 1, [null,null,['self'],['widget'],['beforeIndex']]);
+		$cls_definition['insert'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'getValue', function() {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+			}
+
+			return self['widget']['getValue']();
+		}
+	, 1, [null,null,['self']]);
+		$cls_definition['getValue'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'setValue', function(val) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				val = arguments[1];
+			}
+
+			self['widget']['setValue'](val);
+			return null;
+		}
+	, 1, [null,null,['self'],['val']]);
+		$cls_definition['setValue'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'setErrors', function(errors) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				errors = arguments[1];
+			}
+			var err,$iter1_nextval,$iter1_type,$iter2_iter,$iter1_iter,$iter2_idx,$iter2_nextval,$iter1_array,w,error,$iter2_type,$iter2_array,$iter1_idx;
+			$iter1_iter = self['errors'];
+			if (typeof ($iter1_array = $iter1_iter.__array) != 'undefined') {
+				$iter1_type = 0;
+			} else {
+				$iter1_iter = $iter1_iter.__iter__();
+				$iter1_type = typeof ($iter1_array = $iter1_iter.__array) != 'undefined'? 0 : (typeof $iter1_iter.$genfunc == 'function'? 1 : -1);
+			}
+			$iter1_idx = 0;
+			while (typeof ($iter1_nextval=($iter1_type?($iter1_type > 0?$iter1_iter.next(true,false):pyjslib['wrapped_next']($iter1_iter)):$iter1_array[$iter1_idx++])) != 'undefined') {
+				error = $iter1_nextval;
+				self['remove'](error);
+				self['errors']['remove'](error);
+			}
+			if (pyjslib['bool'](errors)) {
+				errors['reverse']();
+				$iter2_iter = errors;
+				if (typeof ($iter2_array = $iter2_iter.__array) != 'undefined') {
+					$iter2_type = 0;
+				} else {
+					$iter2_iter = $iter2_iter.__iter__();
+					$iter2_type = typeof ($iter2_array = $iter2_iter.__array) != 'undefined'? 0 : (typeof $iter2_iter.$genfunc == 'function'? 1 : -1);
+				}
+				$iter2_idx = 0;
+				while (typeof ($iter2_nextval=($iter2_type?($iter2_type > 0?$iter2_iter.next(true,false):pyjslib['wrapped_next']($iter2_iter)):$iter2_array[$iter2_idx++])) != 'undefined') {
+					err = $iter2_nextval;
+					w = DjangoForm['ErrorLabel'](err);
+					self['errors']['append'](w);
+					self['insert'](w, 0);
+				}
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['errors']]);
+		$cls_definition['setErrors'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(DjangoForm['FlowPanel']));
+	})();
+	DjangoForm['FieldSet'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FieldSet');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = '1f77f91380a771e8f13dbfdb7a5bdb6c';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function() {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 1 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				var kwargs = arguments.length >= 2 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[1];
+					}
+				} else {
+				}
+			}
+
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('Element'))))) {
+				kwargs.__setitem__(String('Element'), DjangoForm['DOM']['createElement'](String('fieldset')));
+			}
+			self.fields = pyjslib['dict']([]);
+			$pyjs_kwargs_call(DjangoForm['FlowPanel'], '__init__', null, kwargs, [{}, self]);
+			return null;
+		}
+	, 1, [null,['kwargs'],['self']]);
+		$cls_definition['__init__'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'addField', function(name, description, widget) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				name = arguments[1];
+				description = arguments[2];
+				widget = arguments[3];
+			}
+			var $attr8,$attr5,$attr7,$attr6;
+			if (pyjslib['bool'](!pyjslib['bool'](self['fields']['has_key'](name)))) {
+				((($attr5=self['fields']) !== null & ($attr6=self).__is_instance__) && typeof $attr5 == 'function'?
+							pyjslib['getattr']($attr6, 'fields'):
+							self['fields']).__setitem__(name, DjangoForm['CtrlHolder'](name, description, widget));
+				self['add'](((($attr7=self['fields']) !== null & ($attr8=self).__is_instance__) && typeof $attr7 == 'function'?
+							pyjslib['getattr']($attr8, 'fields'):
+							self['fields']).__getitem__(name));
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['name'],['description'],['widget']]);
+		$cls_definition['addField'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'removeField', function(fname) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				fname = arguments[1];
+			}
+			var $attr9,$attr11,$attr10,$attr12;
+			if (pyjslib['bool'](self['fields']['has_key'](fname))) {
+				self['remove'](((($attr9=self['fields']) !== null & ($attr10=self).__is_instance__) && typeof $attr9 == 'function'?
+							pyjslib['getattr']($attr10, 'fields'):
+							self['fields']).__getitem__(fname));
+				((($attr11=self['fields']) !== null & ($attr12=self).__is_instance__) && typeof $attr11 == 'function'?
+							pyjslib['getattr']($attr12, 'fields'):
+							self['fields']).__delitem__(fname);
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['fname']]);
+		$cls_definition['removeField'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'getValue', function(fname) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				fname = arguments[1];
+			}
+			var $attr14,$attr13;
+			if (pyjslib['bool'](self['fields']['has_key'](fname))) {
+				return ((($attr13=self['fields']) !== null & ($attr14=self).__is_instance__) && typeof $attr13 == 'function'?
+							pyjslib['getattr']($attr14, 'fields'):
+							self['fields']).__getitem__(fname)['getValue']();
+			}
+			else {
+				return null;
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['fname']]);
+		$cls_definition['getValue'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'setValue', function(fname, val) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				fname = arguments[1];
+				val = arguments[2];
+			}
+			var $attr15,$attr16;
+			if (pyjslib['bool'](self['fields']['has_key'](fname))) {
+				((($attr15=self['fields']) !== null & ($attr16=self).__is_instance__) && typeof $attr15 == 'function'?
+							pyjslib['getattr']($attr16, 'fields'):
+							self['fields']).__getitem__(fname)['setValue'](val);
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['fname'],['val']]);
+		$cls_definition['setValue'] = $method;
+		$method = $pyjs__bind_method($cls_instance, 'setErrors', function(fname, errors) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+			} else {
+				var self = arguments[0];
+				fname = arguments[1];
+				errors = arguments[2];
+			}
+			if (typeof errors == 'undefined') errors=arguments.callee.__args__[4][1];
+			var $attr17,$attr18;
+			if (pyjslib['bool'](self['fields']['has_key'](fname))) {
+				((($attr17=self['fields']) !== null & ($attr18=self).__is_instance__) && typeof $attr17 == 'function'?
+							pyjslib['getattr']($attr18, 'fields'):
+							self['fields']).__getitem__(fname)['setErrors'](errors);
+			}
+			return null;
+		}
+	, 1, [null,null,['self'],['fname'],['errors', null]]);
+		$cls_definition['setErrors'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(DjangoForm['FlowPanel']));
+	})();
 	DjangoForm['CharField'] = (function(){
 		var $cls_instance = $pyjs__class_instance('CharField');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '5c47cf44f678c642dfb86b23bbc0efd2';
+		$cls_definition.__md5__ = 'c0653e2cdac8e555d31032f57df4598c';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function() {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -11747,9 +12295,9 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('Element'))))) {
 					kwargs.__setitem__(String('Element'), DjangoForm['DOM']['createInputPassword']());
 				}
-				if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('StyleName'))))) {
-					kwargs.__setitem__(String('StyleName'), String('gwt-PasswordTextBox'));
-				}
+			}
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('StyleName'))))) {
+				kwargs.__setitem__(String('StyleName'), String('textInput'));
 			}
 			$pyjs_kwargs_call(DjangoForm['TextBox'], '__init__', null, kwargs, [{}, self]);
 			self.max_length = kwargs['get'](String('max_length'), null);
@@ -11796,7 +12344,7 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		var $cls_instance = $pyjs__class_instance('FloatField');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = 'ed8bf216b9fca05463e77de138a2cb3d';
+		$cls_definition.__md5__ = '6117a26872b237cd58b1be2ef710119f';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function() {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -11868,11 +12416,11 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		                            new Array(DjangoForm['TextBox']));
 	})();
 	DjangoForm['widget_factory'] = pyjslib['dict']([[String('CharField'), DjangoForm['CharField']], [String('FloatField'), DjangoForm['FloatField']]]);
-	DjangoForm['FormSaveGrid'] = (function(){
-		var $cls_instance = $pyjs__class_instance('FormSaveGrid');
+	DjangoForm['FormSavePanel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FormSavePanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '32919fcb0d9c5e0e365fbdf8847492ef';
+		$cls_definition.__md5__ = 'a3380e2bc80ca4c4d669fe14eb7aaef4';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(sink) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -11894,9 +12442,9 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				response = arguments[1];
 				request_info = arguments[2];
 			}
-			var $attr1,$attr2,method;
-			method = ((($attr1=request_info['method']) !== null & ($attr2=request_info).__is_instance__) && typeof $attr1 == 'function'?
-						pyjslib['getattr']($attr2, 'method'):
+			var $attr20,method,$attr19;
+			method = ((($attr19=request_info['method']) !== null & ($attr20=request_info).__is_instance__) && typeof $attr19 == 'function'?
+						pyjslib['getattr']($attr20, 'method'):
 						request_info['method']);
 			console['log'](pyjslib['repr'](response));
 			console['log'](pyjslib['sprintf'](String('%d'), pyjslib['len'](response)));
@@ -11909,11 +12457,11 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		return $pyjs__class_function($cls_instance, $cls_definition, 
 		                            new Array(pyjslib.object));
 	})();
-	DjangoForm['FormGetGrid'] = (function(){
-		var $cls_instance = $pyjs__class_instance('FormGetGrid');
+	DjangoForm['FormGetPanel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FormGetPanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '9e30fe260282ba851d68c4ec1736a37e';
+		$cls_definition.__md5__ = '7c55b6fc1c2fd20f407e9da908d30d10';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(sink) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -11935,9 +12483,9 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				response = arguments[1];
 				request_info = arguments[2];
 			}
-			var $attr3,$attr4,method;
-			method = ((($attr3=request_info['method']) !== null & ($attr4=request_info).__is_instance__) && typeof $attr3 == 'function'?
-						pyjslib['getattr']($attr4, 'method'):
+			var method,$attr21,$attr22;
+			method = ((($attr21=request_info['method']) !== null & ($attr22=request_info).__is_instance__) && typeof $attr21 == 'function'?
+						pyjslib['getattr']($attr22, 'method'):
 						request_info['method']);
 			console['log'](method);
 			console['log'](pyjslib['repr'](response));
@@ -11957,15 +12505,15 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				message = arguments[2];
 				request_info = arguments[3];
 			}
-			var $attr5,$add8,$attr6,$add2,$add3,$add1,$add6,$add7,$add4,$add5;
+			var $attr23,$add8,$add2,$add3,$add1,$add6,$add7,$add4,$add5,$attr24;
 			console['log']((typeof ($add7=(typeof ($add5=(typeof ($add3=(typeof ($add1=pyjslib['sprintf'](String('Server Error or Invalid Response: ERROR %d'), code))==typeof ($add2=String(' - ')) && (typeof $add1=='number'||typeof $add1=='string')?
 				$add1+$add2:
 				pyjslib['op_add']($add1,$add2)))==typeof ($add4=pyjslib['str'](message)) && (typeof $add3=='number'||typeof $add3=='string')?
 				$add3+$add4:
 				pyjslib['op_add']($add3,$add4)))==typeof ($add6=String(' - Remote method : ')) && (typeof $add5=='number'||typeof $add5=='string')?
 				$add5+$add6:
-				pyjslib['op_add']($add5,$add6)))==typeof ($add8=((($attr5=request_info['method']) !== null & ($attr6=request_info).__is_instance__) && typeof $attr5 == 'function'?
-						pyjslib['getattr']($attr6, 'method'):
+				pyjslib['op_add']($add5,$add6)))==typeof ($add8=((($attr23=request_info['method']) !== null & ($attr24=request_info).__is_instance__) && typeof $attr23 == 'function'?
+						pyjslib['getattr']($attr24, 'method'):
 						request_info['method'])) && (typeof $add7=='number'||typeof $add7=='string')?
 				$add7+$add8:
 				pyjslib['op_add']($add7,$add8)));
@@ -11976,11 +12524,11 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		return $pyjs__class_function($cls_instance, $cls_definition, 
 		                            new Array(pyjslib.object));
 	})();
-	DjangoForm['FormDescribeGrid'] = (function(){
-		var $cls_instance = $pyjs__class_instance('FormDescribeGrid');
+	DjangoForm['FormDescribePanel'] = (function(){
+		var $cls_instance = $pyjs__class_instance('FormDescribePanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = 'a8d4e1e3b68e8814fed3f6af9145b03e';
+		$cls_definition.__md5__ = 'c93045fb685b054701187e90fe673770';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(sink) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -12002,9 +12550,9 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				response = arguments[1];
 				request_info = arguments[2];
 			}
-			var $attr8,$attr7,method;
-			method = ((($attr7=request_info['method']) !== null & ($attr8=request_info).__is_instance__) && typeof $attr7 == 'function'?
-						pyjslib['getattr']($attr8, 'method'):
+			var method,$attr25,$attr26;
+			method = ((($attr25=request_info['method']) !== null & ($attr26=request_info).__is_instance__) && typeof $attr25 == 'function'?
+						pyjslib['getattr']($attr26, 'method'):
 						request_info['method']);
 			console['log'](method);
 			console['log'](pyjslib['repr'](response));
@@ -12024,15 +12572,15 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				message = arguments[2];
 				request_info = arguments[3];
 			}
-			var $attr9,$attr10,$add14,$add15,$add16,$add10,$add11,$add12,$add13,$add9;
+			var $attr27,$add14,$add15,$add16,$add10,$add11,$add12,$add13,$attr28,$add9;
 			DjangoForm.writebr((typeof ($add15=(typeof ($add13=(typeof ($add11=(typeof ($add9=pyjslib['sprintf'](String('Server Error or Invalid Response: ERROR %d'), code))==typeof ($add10=String(' - ')) && (typeof $add9=='number'||typeof $add9=='string')?
 				$add9+$add10:
 				pyjslib['op_add']($add9,$add10)))==typeof ($add12=pyjslib['str'](message)) && (typeof $add11=='number'||typeof $add11=='string')?
 				$add11+$add12:
 				pyjslib['op_add']($add11,$add12)))==typeof ($add14=String(' - Remote method : ')) && (typeof $add13=='number'||typeof $add13=='string')?
 				$add13+$add14:
-				pyjslib['op_add']($add13,$add14)))==typeof ($add16=((($attr9=request_info['method']) !== null & ($attr10=request_info).__is_instance__) && typeof $attr9 == 'function'?
-						pyjslib['getattr']($attr10, 'method'):
+				pyjslib['op_add']($add13,$add14)))==typeof ($add16=((($attr27=request_info['method']) !== null & ($attr28=request_info).__is_instance__) && typeof $attr27 == 'function'?
+						pyjslib['getattr']($attr28, 'method'):
 						request_info['method'])) && (typeof $add15=='number'||typeof $add15=='string')?
 				$add15+$add16:
 				pyjslib['op_add']($add15,$add16)));
@@ -12047,7 +12595,7 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		var $cls_instance = $pyjs__class_instance('Form');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = 'b9b0dad15f94d45449cd8d81de15c7df';
+		$cls_definition.__md5__ = 'ceb2560fa728552dbaf4fb3ca3375b2c';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(svc) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -12082,7 +12630,7 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				} else {
 				}
 			}
-			var data,listener,$attr11,$attr12;
+			var listener,$attr30,$attr29,data;
 			self.describe_listeners = pyjslib['list']([]);
 			if (pyjslib['bool'](kwargs['has_key'](String('listener')))) {
 				listener = kwargs['pop'](String('listener'));
@@ -12097,14 +12645,13 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 			console['log'](pyjslib['repr'](data));
 			$pyjs_kwargs_call(DjangoForm['FormPanel'], '__init__', null, kwargs, [{}, self]);
 			self.svc = svc;
-			self.grid = DjangoForm['Grid']();
-			self['grid']['resize'](0, 3);
-			self['add'](((($attr11=self['grid']) !== null & ($attr12=self).__is_instance__) && typeof $attr11 == 'function'?
-						pyjslib['getattr']($attr12, 'grid'):
-						self['grid']));
-			self.describer = DjangoForm['FormDescribeGrid'](self);
-			self.saver = DjangoForm['FormSaveGrid'](self);
-			self.getter = DjangoForm['FormGetGrid'](self);
+			self.fieldset = $pyjs_kwargs_call(null, DjangoForm['FieldSet'], null, null, [{StyleName:String('inlineLabels')}]);
+			self['add'](((($attr29=self['fieldset']) !== null & ($attr30=self).__is_instance__) && typeof $attr29 == 'function'?
+						pyjslib['getattr']($attr30, 'fieldset'):
+						self['fieldset']));
+			self.describer = DjangoForm['FormDescribePanel'](self);
+			self.saver = DjangoForm['FormSavePanel'](self);
+			self.getter = DjangoForm['FormGetPanel'](self);
 			self['formsetup'](data);
 			return null;
 		}
@@ -12123,25 +12670,6 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 		}
 	, 1, [null,null,['self'],['l']]);
 		$cls_definition['addDescribeListener'] = $method;
-		$method = $pyjs__bind_method($cls_instance, 'add_widget', function(description, widget) {
-			if (this.__is_instance__ === true) {
-				var self = this;
-			} else {
-				var self = arguments[0];
-				description = arguments[1];
-				widget = arguments[2];
-			}
-			var $add17,num_rows,$add18;
-			num_rows = self['grid']['getRowCount']();
-			self['grid']['resize']((typeof ($add17=num_rows)==typeof ($add18=1) && (typeof $add17=='number'||typeof $add17=='string')?
-				$add17+$add18:
-				pyjslib['op_add']($add17,$add18)), 3);
-			self['grid']['setHTML'](num_rows, 0, description);
-			self['grid']['setWidget'](num_rows, 1, widget);
-			return null;
-		}
-	, 1, [null,null,['self'],['description'],['widget']]);
-		$cls_definition['add_widget'] = $method;
 		$method = $pyjs__bind_method($cls_instance, 'get', function() {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -12170,10 +12698,10 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				} else {
 				}
 			}
-			var $attr14,$attr13;
+			var $attr32,$attr31;
 			console['log'](pyjslib['repr'](kwargs));
-			self['svc'](pyjslib['dict']([]), pyjslib['dict']([[String('get'), kwargs]]), ((($attr13=self['getter']) !== null & ($attr14=self).__is_instance__) && typeof $attr13 == 'function'?
-						pyjslib['getattr']($attr14, 'getter'):
+			self['svc'](pyjslib['dict']([]), pyjslib['dict']([[String('get'), kwargs]]), ((($attr31=self['getter']) !== null & ($attr32=self).__is_instance__) && typeof $attr31 == 'function'?
+						pyjslib['getattr']($attr32, 'getter'):
 						self['getter']));
 			return null;
 		}
@@ -12187,17 +12715,17 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				data = arguments[1];
 			}
 			if (typeof data == 'undefined') data=arguments.callee.__args__[3][1];
-			var $attr18,$attr15,$attr17,$attr16;
+			var $attr33,$attr36,$attr35,$attr34;
 			self['clear_errors']();
 			if (pyjslib['bool']((data === null))) {
 				data = self['getValue']();
 			}
 			self.data = data;
-			console['log'](pyjslib['repr'](((($attr15=self['data']) !== null & ($attr16=self).__is_instance__) && typeof $attr15 == 'function'?
-						pyjslib['getattr']($attr16, 'data'):
+			console['log'](pyjslib['repr'](((($attr33=self['data']) !== null & ($attr34=self).__is_instance__) && typeof $attr33 == 'function'?
+						pyjslib['getattr']($attr34, 'data'):
 						self['data'])));
-			self['svc'](data, pyjslib['dict']([[String('save'), null]]), ((($attr17=self['saver']) !== null & ($attr18=self).__is_instance__) && typeof $attr17 == 'function'?
-						pyjslib['getattr']($attr18, 'saver'):
+			self['svc'](data, pyjslib['dict']([[String('save'), null]]), ((($attr35=self['saver']) !== null & ($attr36=self).__is_instance__) && typeof $attr35 == 'function'?
+						pyjslib['getattr']($attr36, 'saver'):
 						self['saver']));
 			return null;
 		}
@@ -12210,34 +12738,34 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				var self = arguments[0];
 				response = arguments[1];
 			}
-			var errors,$iter1_nextval,$iter1_type,$iter2_iter,l,$iter1_iter,$iter2_idx,$iter2_nextval,$iter1_array,$iter2_type,$iter2_array,$iter1_idx;
+			var errors,$iter4_nextval,$iter3_array,l,$iter4_idx,$iter3_idx,$iter3_iter,$iter4_type,$iter3_type,$iter4_array,$iter4_iter,$iter3_nextval;
 			if (pyjslib['bool'](!pyjslib['bool'](response.__getitem__(String('success'))))) {
 				errors = response.__getitem__(String('errors'));
 				self['set_errors'](errors);
-				$iter1_iter = self['describe_listeners'];
-				if (typeof ($iter1_array = $iter1_iter.__array) != 'undefined') {
-					$iter1_type = 0;
+				$iter3_iter = self['describe_listeners'];
+				if (typeof ($iter3_array = $iter3_iter.__array) != 'undefined') {
+					$iter3_type = 0;
 				} else {
-					$iter1_iter = $iter1_iter.__iter__();
-					$iter1_type = typeof ($iter1_array = $iter1_iter.__array) != 'undefined'? 0 : (typeof $iter1_iter.$genfunc == 'function'? 1 : -1);
+					$iter3_iter = $iter3_iter.__iter__();
+					$iter3_type = typeof ($iter3_array = $iter3_iter.__array) != 'undefined'? 0 : (typeof $iter3_iter.$genfunc == 'function'? 1 : -1);
 				}
-				$iter1_idx = 0;
-				while (typeof ($iter1_nextval=($iter1_type?($iter1_type > 0?$iter1_iter.next(true,false):pyjslib['wrapped_next']($iter1_iter)):$iter1_array[$iter1_idx++])) != 'undefined') {
-					l = $iter1_nextval;
+				$iter3_idx = 0;
+				while (typeof ($iter3_nextval=($iter3_type?($iter3_type > 0?$iter3_iter.next(true,false):pyjslib['wrapped_next']($iter3_iter)):$iter3_array[$iter3_idx++])) != 'undefined') {
+					l = $iter3_nextval;
 					l['onErrors'](self, errors);
 				}
 				return null;
 			}
-			$iter2_iter = self['describe_listeners'];
-			if (typeof ($iter2_array = $iter2_iter.__array) != 'undefined') {
-				$iter2_type = 0;
+			$iter4_iter = self['describe_listeners'];
+			if (typeof ($iter4_array = $iter4_iter.__array) != 'undefined') {
+				$iter4_type = 0;
 			} else {
-				$iter2_iter = $iter2_iter.__iter__();
-				$iter2_type = typeof ($iter2_array = $iter2_iter.__array) != 'undefined'? 0 : (typeof $iter2_iter.$genfunc == 'function'? 1 : -1);
+				$iter4_iter = $iter4_iter.__iter__();
+				$iter4_type = typeof ($iter4_array = $iter4_iter.__array) != 'undefined'? 0 : (typeof $iter4_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter2_idx = 0;
-			while (typeof ($iter2_nextval=($iter2_type?($iter2_type > 0?$iter2_iter.next(true,false):pyjslib['wrapped_next']($iter2_iter)):$iter2_array[$iter2_idx++])) != 'undefined') {
-				l = $iter2_nextval;
+			$iter4_idx = 0;
+			while (typeof ($iter4_nextval=($iter4_type?($iter4_type > 0?$iter4_iter.next(true,false):pyjslib['wrapped_next']($iter4_iter)):$iter4_array[$iter4_idx++])) != 'undefined') {
+				l = $iter4_nextval;
 				l['onSaveDone'](self, response);
 			}
 			return null;
@@ -12252,16 +12780,16 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				data = arguments[1];
 			}
 			if (typeof data == 'undefined') data=arguments.callee.__args__[3][1];
-			var $attr20,$attr21,$attr22,$attr19;
+			var $attr37,$attr40,$attr39,$attr38;
 			if (pyjslib['bool']((data === null))) {
 				data = pyjslib['dict']([]);
 			}
 			self.data = data;
-			console['log'](pyjslib['repr'](((($attr19=self['data']) !== null & ($attr20=self).__is_instance__) && typeof $attr19 == 'function'?
-						pyjslib['getattr']($attr20, 'data'):
+			console['log'](pyjslib['repr'](((($attr37=self['data']) !== null & ($attr38=self).__is_instance__) && typeof $attr37 == 'function'?
+						pyjslib['getattr']($attr38, 'data'):
 						self['data'])));
-			self['svc'](data, pyjslib['dict']([[String('describe'), null]]), ((($attr21=self['describer']) !== null & ($attr22=self).__is_instance__) && typeof $attr21 == 'function'?
-						pyjslib['getattr']($attr22, 'describer'):
+			self['svc'](data, pyjslib['dict']([[String('describe'), null]]), ((($attr39=self['describer']) !== null & ($attr40=self).__is_instance__) && typeof $attr39 == 'function'?
+						pyjslib['getattr']($attr40, 'describer'):
 						self['describer']));
 			return null;
 		}
@@ -12273,21 +12801,18 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 			} else {
 				var self = arguments[0];
 			}
-			var $iter3_idx,idx,$iter3_type,$attr23,$attr24,$iter3_iter,fname,$iter3_array,$iter3_nextval;
-			$iter3_iter = pyjslib['enumerate'](((($attr23=self['fields']) !== null & ($attr24=self).__is_instance__) && typeof $attr23 == 'function'?
-						pyjslib['getattr']($attr24, 'fields'):
-						self['fields']));
-			if (typeof ($iter3_array = $iter3_iter.__array) != 'undefined') {
-				$iter3_type = 0;
+			var $iter5_nextval,$iter5_idx,$iter5_iter,fname,$iter5_array,$iter5_type;
+			$iter5_iter = self['fields'];
+			if (typeof ($iter5_array = $iter5_iter.__array) != 'undefined') {
+				$iter5_type = 0;
 			} else {
-				$iter3_iter = $iter3_iter.__iter__();
-				$iter3_type = typeof ($iter3_array = $iter3_iter.__array) != 'undefined'? 0 : (typeof $iter3_iter.$genfunc == 'function'? 1 : -1);
+				$iter5_iter = $iter5_iter.__iter__();
+				$iter5_type = typeof ($iter5_array = $iter5_iter.__array) != 'undefined'? 0 : (typeof $iter5_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter3_idx = 0;
-			while (typeof ($iter3_nextval=($iter3_type?($iter3_type > 0?$iter3_iter.next(true,true):pyjslib['wrapped_next']($iter3_iter)):$iter3_array[$iter3_idx++])) != 'undefined') {
-				idx = $iter3_nextval.__array[0];
-				fname = $iter3_nextval.__array[1];
-				self['grid']['setHTML'](idx, 2, null);
+			$iter5_idx = 0;
+			while (typeof ($iter5_nextval=($iter5_type?($iter5_type > 0?$iter5_iter.next(true,false):pyjslib['wrapped_next']($iter5_iter)):$iter5_array[$iter5_idx++])) != 'undefined') {
+				fname = $iter5_nextval;
+				self['fieldset']['setErrors'](fname, null);
 			}
 			return null;
 		}
@@ -12300,37 +12825,19 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				var self = arguments[0];
 				errors = arguments[1];
 			}
-			var $iter5_nextval,err,$iter5_idx,fname,idx,offsets,$iter4_nextval,$attr26,$iter4_idx,$iter5_iter,$attr25,$iter4_type,$iter5_array,$iter4_array,$iter5_type,$iter4_iter,k;
-			offsets = pyjslib['dict']([]);
-			$iter4_iter = pyjslib['enumerate'](((($attr25=self['fields']) !== null & ($attr26=self).__is_instance__) && typeof $attr25 == 'function'?
-						pyjslib['getattr']($attr26, 'fields'):
-						self['fields']));
-			if (typeof ($iter4_array = $iter4_iter.__array) != 'undefined') {
-				$iter4_type = 0;
+			var err,$iter6_idx,$iter6_type,$iter6_array,fname,$iter6_iter,$iter6_nextval;
+			$iter6_iter = errors['items']();
+			if (typeof ($iter6_array = $iter6_iter.__array) != 'undefined') {
+				$iter6_type = 0;
 			} else {
-				$iter4_iter = $iter4_iter.__iter__();
-				$iter4_type = typeof ($iter4_array = $iter4_iter.__array) != 'undefined'? 0 : (typeof $iter4_iter.$genfunc == 'function'? 1 : -1);
+				$iter6_iter = $iter6_iter.__iter__();
+				$iter6_type = typeof ($iter6_array = $iter6_iter.__array) != 'undefined'? 0 : (typeof $iter6_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter4_idx = 0;
-			while (typeof ($iter4_nextval=($iter4_type?($iter4_type > 0?$iter4_iter.next(true,true):pyjslib['wrapped_next']($iter4_iter)):$iter4_array[$iter4_idx++])) != 'undefined') {
-				idx = $iter4_nextval.__array[0];
-				fname = $iter4_nextval.__array[1];
-				offsets.__setitem__(fname, idx);
-			}
-			$iter5_iter = errors['items']();
-			if (typeof ($iter5_array = $iter5_iter.__array) != 'undefined') {
-				$iter5_type = 0;
-			} else {
-				$iter5_iter = $iter5_iter.__iter__();
-				$iter5_type = typeof ($iter5_array = $iter5_iter.__array) != 'undefined'? 0 : (typeof $iter5_iter.$genfunc == 'function'? 1 : -1);
-			}
-			$iter5_idx = 0;
-			while (typeof ($iter5_nextval=($iter5_type?($iter5_type > 0?$iter5_iter.next(true,true):pyjslib['wrapped_next']($iter5_iter)):$iter5_array[$iter5_idx++])) != 'undefined') {
-				k = $iter5_nextval.__array[0];
-				err = $iter5_nextval.__array[1];
-				err = String('\x3Cbr /\x3E')['join'](err);
-				idx = offsets.__getitem__(k);
-				self['grid']['setHTML'](idx, 2, err);
+			$iter6_idx = 0;
+			while (typeof ($iter6_nextval=($iter6_type?($iter6_type > 0?$iter6_iter.next(true,true):pyjslib['wrapped_next']($iter6_iter)):$iter6_array[$iter6_idx++])) != 'undefined') {
+				fname = $iter6_nextval.__array[0];
+				err = $iter6_nextval.__array[1];
+				self['fieldset']['setErrors'](fname, err);
 			}
 			return null;
 		}
@@ -12344,31 +12851,27 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				data = arguments[1];
 			}
 			if (typeof data == 'undefined') data=arguments.callee.__args__[3][1];
-			var idx,$iter6_idx,$iter6_type,w,$iter6_array,val,fname,$attr27,$attr28,$attr29,$iter6_iter,$attr30,$iter6_nextval;
+			var $attr41,val,$iter7_nextval,$iter7_iter,$iter7_array,$attr42,fname,$iter7_idx,$iter7_type;
 			if (pyjslib['bool']((data !== null))) {
 				self.data = data;
 			}
-			$iter6_iter = pyjslib['enumerate'](((($attr27=self['fields']) !== null & ($attr28=self).__is_instance__) && typeof $attr27 == 'function'?
-						pyjslib['getattr']($attr28, 'fields'):
-						self['fields']));
-			if (typeof ($iter6_array = $iter6_iter.__array) != 'undefined') {
-				$iter6_type = 0;
+			$iter7_iter = self['fields'];
+			if (typeof ($iter7_array = $iter7_iter.__array) != 'undefined') {
+				$iter7_type = 0;
 			} else {
-				$iter6_iter = $iter6_iter.__iter__();
-				$iter6_type = typeof ($iter6_array = $iter6_iter.__array) != 'undefined'? 0 : (typeof $iter6_iter.$genfunc == 'function'? 1 : -1);
+				$iter7_iter = $iter7_iter.__iter__();
+				$iter7_type = typeof ($iter7_array = $iter7_iter.__array) != 'undefined'? 0 : (typeof $iter7_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter6_idx = 0;
-			while (typeof ($iter6_nextval=($iter6_type?($iter6_type > 0?$iter6_iter.next(true,true):pyjslib['wrapped_next']($iter6_iter)):$iter6_array[$iter6_idx++])) != 'undefined') {
-				idx = $iter6_nextval.__array[0];
-				fname = $iter6_nextval.__array[1];
+			$iter7_idx = 0;
+			while (typeof ($iter7_nextval=($iter7_type?($iter7_type > 0?$iter7_iter.next(true,false):pyjslib['wrapped_next']($iter7_iter)):$iter7_array[$iter7_idx++])) != 'undefined') {
+				fname = $iter7_nextval;
 				val = null;
 				if (pyjslib['bool'](self['data']['has_key'](fname))) {
-					val = ((($attr29=self['data']) !== null & ($attr30=self).__is_instance__) && typeof $attr29 == 'function'?
-								pyjslib['getattr']($attr30, 'data'):
+					val = ((($attr41=self['data']) !== null & ($attr42=self).__is_instance__) && typeof $attr41 == 'function'?
+								pyjslib['getattr']($attr42, 'data'):
 								self['data']).__getitem__(fname);
 				}
-				w = self['grid']['getWidget'](idx, 1);
-				w['setValue'](val);
+				self['fieldset']['setValue'](fname, val);
 			}
 			return null;
 		}
@@ -12381,21 +12884,21 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				var self = arguments[0];
 				response = arguments[1];
 			}
-			var $iter7_nextval,fields,$iter7_array,l,$iter7_idx,$iter7_iter,$iter7_type;
+			var $iter8_idx,fields,$iter8_array,l,$iter8_iter,$iter8_nextval,$iter8_type;
 			fields = response['get'](String('instance'), null);
 			if (pyjslib['bool'](fields)) {
 				self['update_values'](fields);
 			}
-			$iter7_iter = self['describe_listeners'];
-			if (typeof ($iter7_array = $iter7_iter.__array) != 'undefined') {
-				$iter7_type = 0;
+			$iter8_iter = self['describe_listeners'];
+			if (typeof ($iter8_array = $iter8_iter.__array) != 'undefined') {
+				$iter8_type = 0;
 			} else {
-				$iter7_iter = $iter7_iter.__iter__();
-				$iter7_type = typeof ($iter7_array = $iter7_iter.__array) != 'undefined'? 0 : (typeof $iter7_iter.$genfunc == 'function'? 1 : -1);
+				$iter8_iter = $iter8_iter.__iter__();
+				$iter8_type = typeof ($iter8_array = $iter8_iter.__array) != 'undefined'? 0 : (typeof $iter8_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter7_idx = 0;
-			while (typeof ($iter7_nextval=($iter7_type?($iter7_type > 0?$iter7_iter.next(true,false):pyjslib['wrapped_next']($iter7_iter)):$iter7_array[$iter7_idx++])) != 'undefined') {
-				l = $iter7_nextval;
+			$iter8_idx = 0;
+			while (typeof ($iter8_nextval=($iter8_type?($iter8_type > 0?$iter8_iter.next(true,false):pyjslib['wrapped_next']($iter8_iter)):$iter8_array[$iter8_idx++])) != 'undefined') {
+				l = $iter8_nextval;
 				l['onRetrieveDone'](self, fields);
 			}
 			return null;
@@ -12409,59 +12912,59 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 				var self = arguments[0];
 				fields = arguments[1];
 			}
-			var $iter10_nextval,$iter8_iter,$iter10_iter,field_type,$iter9_iter,$iter9_nextval,$iter9_idx,field,fname,$iter8_type,$iter10_idx,$iter8_idx,fv,$and1,$and2,v,$attr33,$attr32,$attr31,$iter8_nextval,$attr35,$attr34,idx,k,$iter8_array,l,$iter10_array,$iter9_type,w,widget_kls,$iter10_type,$iter9_array,$attr36;
+			var $iter10_nextval,$attr46,$attr47,$attr44,$attr45,$attr43,$iter10_iter,$attr48,field_type,$iter9_iter,$iter9_nextval,$iter9_idx,field,fname,$iter11_iter,$iter11_idx,$iter9_type,fv,$and1,$and2,$iter10_idx,$iter11_array,$iter11_nextval,idx,k,$iter11_type,v,l,$iter10_array,w,widget_kls,$iter10_type,$iter9_array;
 			self.fields = fields['keys']();
-			$iter8_iter = pyjslib['enumerate'](((($attr31=self['fields']) !== null & ($attr32=self).__is_instance__) && typeof $attr31 == 'function'?
-						pyjslib['getattr']($attr32, 'fields'):
+			$iter9_iter = pyjslib['enumerate'](((($attr43=self['fields']) !== null & ($attr44=self).__is_instance__) && typeof $attr43 == 'function'?
+						pyjslib['getattr']($attr44, 'fields'):
 						self['fields']));
-			if (typeof ($iter8_array = $iter8_iter.__array) != 'undefined') {
-				$iter8_type = 0;
+			if (typeof ($iter9_array = $iter9_iter.__array) != 'undefined') {
+				$iter9_type = 0;
 			} else {
-				$iter8_iter = $iter8_iter.__iter__();
-				$iter8_type = typeof ($iter8_array = $iter8_iter.__array) != 'undefined'? 0 : (typeof $iter8_iter.$genfunc == 'function'? 1 : -1);
+				$iter9_iter = $iter9_iter.__iter__();
+				$iter9_type = typeof ($iter9_array = $iter9_iter.__array) != 'undefined'? 0 : (typeof $iter9_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter8_idx = 0;
-			while (typeof ($iter8_nextval=($iter8_type?($iter8_type > 0?$iter8_iter.next(true,true):pyjslib['wrapped_next']($iter8_iter)):$iter8_array[$iter8_idx++])) != 'undefined') {
-				idx = $iter8_nextval.__array[0];
-				fname = $iter8_nextval.__array[1];
+			$iter9_idx = 0;
+			while (typeof ($iter9_nextval=($iter9_type?($iter9_type > 0?$iter9_iter.next(true,true):pyjslib['wrapped_next']($iter9_iter)):$iter9_array[$iter9_idx++])) != 'undefined') {
+				idx = $iter9_nextval.__array[0];
+				fname = $iter9_nextval.__array[1];
 				field = fields.__getitem__(fname);
-				if (pyjslib['bool']((pyjslib['bool']($and1=((($attr33=self['data']) !== null & ($attr34=self).__is_instance__) && typeof $attr33 == 'function'?
-							pyjslib['getattr']($attr34, 'data'):
+				if (pyjslib['bool']((pyjslib['bool']($and1=((($attr45=self['data']) !== null & ($attr46=self).__is_instance__) && typeof $attr45 == 'function'?
+							pyjslib['getattr']($attr46, 'data'):
 							self['data']))?self['data']['has_key'](fname):$and1))) {
-					field.__setitem__(String('initial'), ((($attr35=self['data']) !== null & ($attr36=self).__is_instance__) && typeof $attr35 == 'function'?
-								pyjslib['getattr']($attr36, 'data'):
+					field.__setitem__(String('initial'), ((($attr47=self['data']) !== null & ($attr48=self).__is_instance__) && typeof $attr47 == 'function'?
+								pyjslib['getattr']($attr48, 'data'):
 								self['data']).__getitem__(fname));
 				}
 				console['log'](pyjslib['sprintf'](String('%s %s %d'), pyjslib['tuple']([fname, field.__getitem__(String('label')), idx])));
 				field_type = field.__getitem__(String('type'));
 				widget_kls = DjangoForm['widget_factory']['get'](field_type, DjangoForm['CharField']);
 				fv = pyjslib['dict']([]);
-				$iter9_iter = field['items']();
-				if (typeof ($iter9_array = $iter9_iter.__array) != 'undefined') {
-					$iter9_type = 0;
+				$iter10_iter = field['items']();
+				if (typeof ($iter10_array = $iter10_iter.__array) != 'undefined') {
+					$iter10_type = 0;
 				} else {
-					$iter9_iter = $iter9_iter.__iter__();
-					$iter9_type = typeof ($iter9_array = $iter9_iter.__array) != 'undefined'? 0 : (typeof $iter9_iter.$genfunc == 'function'? 1 : -1);
+					$iter10_iter = $iter10_iter.__iter__();
+					$iter10_type = typeof ($iter10_array = $iter10_iter.__array) != 'undefined'? 0 : (typeof $iter10_iter.$genfunc == 'function'? 1 : -1);
 				}
-				$iter9_idx = 0;
-				while (typeof ($iter9_nextval=($iter9_type?($iter9_type > 0?$iter9_iter.next(true,true):pyjslib['wrapped_next']($iter9_iter)):$iter9_array[$iter9_idx++])) != 'undefined') {
-					k = $iter9_nextval.__array[0];
-					v = $iter9_nextval.__array[1];
+				$iter10_idx = 0;
+				while (typeof ($iter10_nextval=($iter10_type?($iter10_type > 0?$iter10_iter.next(true,true):pyjslib['wrapped_next']($iter10_iter)):$iter10_array[$iter10_idx++])) != 'undefined') {
+					k = $iter10_nextval.__array[0];
+					v = $iter10_nextval.__array[1];
 					fv.__setitem__(pyjslib['str'](k), v);
 				}
 				w = $pyjs_kwargs_call(null, widget_kls, null, fv, [{}]);
-				self['add_widget'](field.__getitem__(String('label')), w);
+				self['fieldset']['addField'](fname, field.__getitem__(String('label')), w);
 			}
-			$iter10_iter = self['describe_listeners'];
-			if (typeof ($iter10_array = $iter10_iter.__array) != 'undefined') {
-				$iter10_type = 0;
+			$iter11_iter = self['describe_listeners'];
+			if (typeof ($iter11_array = $iter11_iter.__array) != 'undefined') {
+				$iter11_type = 0;
 			} else {
-				$iter10_iter = $iter10_iter.__iter__();
-				$iter10_type = typeof ($iter10_array = $iter10_iter.__array) != 'undefined'? 0 : (typeof $iter10_iter.$genfunc == 'function'? 1 : -1);
+				$iter11_iter = $iter11_iter.__iter__();
+				$iter11_type = typeof ($iter11_array = $iter11_iter.__array) != 'undefined'? 0 : (typeof $iter11_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter10_idx = 0;
-			while (typeof ($iter10_nextval=($iter10_type?($iter10_type > 0?$iter10_iter.next(true,false):pyjslib['wrapped_next']($iter10_iter)):$iter10_array[$iter10_idx++])) != 'undefined') {
-				l = $iter10_nextval;
+			$iter11_idx = 0;
+			while (typeof ($iter11_nextval=($iter11_type?($iter11_type > 0?$iter11_iter.next(true,false):pyjslib['wrapped_next']($iter11_iter)):$iter11_array[$iter11_idx++])) != 'undefined') {
+				l = $iter11_nextval;
 				l['onDescribeDone'](self);
 			}
 			return null;
@@ -12474,26 +12977,22 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 			} else {
 				var self = arguments[0];
 			}
-			var $attr40,$attr38,$iter11_iter,idx,res,$iter11_type,w,val,$attr37,fname,$iter11_array,$iter11_nextval,$iter11_idx,$attr39;
+			var $iter12_type,val,res,$iter12_array,$iter12_iter,fname,$attr50,$iter12_idx,$iter12_nextval,$attr49;
 			res = pyjslib['dict']([]);
-			$iter11_iter = pyjslib['enumerate'](((($attr37=self['fields']) !== null & ($attr38=self).__is_instance__) && typeof $attr37 == 'function'?
-						pyjslib['getattr']($attr38, 'fields'):
-						self['fields']));
-			if (typeof ($iter11_array = $iter11_iter.__array) != 'undefined') {
-				$iter11_type = 0;
+			$iter12_iter = self['fields'];
+			if (typeof ($iter12_array = $iter12_iter.__array) != 'undefined') {
+				$iter12_type = 0;
 			} else {
-				$iter11_iter = $iter11_iter.__iter__();
-				$iter11_type = typeof ($iter11_array = $iter11_iter.__array) != 'undefined'? 0 : (typeof $iter11_iter.$genfunc == 'function'? 1 : -1);
+				$iter12_iter = $iter12_iter.__iter__();
+				$iter12_type = typeof ($iter12_array = $iter12_iter.__array) != 'undefined'? 0 : (typeof $iter12_iter.$genfunc == 'function'? 1 : -1);
 			}
-			$iter11_idx = 0;
-			while (typeof ($iter11_nextval=($iter11_type?($iter11_type > 0?$iter11_iter.next(true,true):pyjslib['wrapped_next']($iter11_iter)):$iter11_array[$iter11_idx++])) != 'undefined') {
-				idx = $iter11_nextval.__array[0];
-				fname = $iter11_nextval.__array[1];
-				w = self['grid']['getWidget'](idx, 1);
-				val = w['getValue']();
+			$iter12_idx = 0;
+			while (typeof ($iter12_nextval=($iter12_type?($iter12_type > 0?$iter12_iter.next(true,false):pyjslib['wrapped_next']($iter12_iter)):$iter12_array[$iter12_idx++])) != 'undefined') {
+				fname = $iter12_nextval;
+				val = self['fieldset']['getValue'](fname);
 				res.__setitem__(fname, val);
-				((($attr39=self['data']) !== null & ($attr40=self).__is_instance__) && typeof $attr39 == 'function'?
-							pyjslib['getattr']($attr40, 'data'):
+				((($attr49=self['data']) !== null & ($attr50=self).__is_instance__) && typeof $attr49 == 'function'?
+							pyjslib['getattr']($attr50, 'data'):
 							self['data']).__setitem__(fname, val);
 			}
 			return res;
@@ -12511,7 +13010,7 @@ $pyjs.loaded_modules['DjangoForm'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['pyjamas.DOM', 'pyjamas', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui', 'pyjamas.ui.TextBox', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.FormPanel.FormPanel', 'pyjamas.ui.FormPanel']
+PYJS_DEPS: ['pyjamas.DOM', 'pyjamas', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui', 'pyjamas.ui.TextBox', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.FormPanel.FormPanel', 'pyjamas.ui.FormPanel', 'pyjamas.ui.FlowPanel.FlowPanel', 'pyjamas.ui.FlowPanel', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label']
 */
 
 --></script>
@@ -27697,7 +28196,7 @@ $pyjs.loaded_modules['RegisterPanel'] = function (__mod_name__) {
 		var $cls_instance = $pyjs__class_instance('RegisterPanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '0a6e471b246c62e98c221ec52a9318c3';
+		$cls_definition.__md5__ = '93675380c30b2bb4e9165dfb4250dd0f';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(listener) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -27755,7 +28254,7 @@ $pyjs.loaded_modules['RegisterPanel'] = function (__mod_name__) {
 			}
 			var $attr9,$attr11,$attr10,$attr12;
 			self.formsvc = RegisterPanel['FormService'](pyjslib['list']([String('usercreationform')]));
-			self.form = $pyjs_kwargs_call(null, RegisterPanel['Form'], null, null, [{data:null, listener:self}, pyjslib['getattr'](((($attr9=self['formsvc']) !== null & ($attr10=self).__is_instance__) && typeof $attr9 == 'function'?
+			self.form = $pyjs_kwargs_call(null, RegisterPanel['Form'], null, null, [{data:null, listener:self, StyleName:String('uniForm')}, pyjslib['getattr'](((($attr9=self['formsvc']) !== null & ($attr10=self).__is_instance__) && typeof $attr9 == 'function'?
 						pyjslib['getattr']($attr10, 'formsvc'):
 						self['formsvc']), String('usercreationform'))]);
 			self['form_panel']['insert'](((($attr11=self['form']) !== null & ($attr12=self).__is_instance__) && typeof $attr11 == 'function'?
@@ -31006,7 +31505,7 @@ function prepare_app() {
         };
         wait();
     }
-    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.FocusWidget','pyjamas.Window','pyjamas.ui.PopupPanel','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pyjamas.JSONService','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','LoginPanel','pyjamas.JSONParser','DataService','pygwt','pyjamas.ui.Button','pyjamas.ui.EventObject','pyjamas.ui.TextBoxBase','pyjamas','ClientBank','pyjamas.ui.HorizontalPanel','pyjamas.ui.RowFormatter','pyjamas.ui.TextBox','pyjamas.ui.Focus','binascii','pyjamas.ui.Label','urllib','pyjamas.ui.FormPanel','pyjamas.ui.ComplexPanel','pyjamas.HTTPRequest','AccountListSink','pyjamas.Timer','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.Cookies','pyjamas.ui.Hidden','pyjamas.ui.HTMLTable','pyjamas.ui.Hyperlink','pyjamas.ui.PasswordTextBox','pyjamas.History','struct','pyjamas.ui.Panel','pyjamas.Factory','base64','pyjamas.ui.MenuBarPopupPanel','IntroSink','pyjamas.ui.CellPanel','pyjamas.DeferredCommand','pyjamas.ui.MouseListener','RegisterPanel','pyjamas.ui.MenuBar','pyjamas.log','jsonrpc.json','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.ui.SimplePanel','DjangoForm','pyjamas.ui.RootPanel','dynamic','pyjamas.ui.UIObject','datetime','pyjamas.DOM','pyjd','pyjamas.ui.Grid','pyjamas.ui.MenuItem','time','DashboardPanel','pyjamas.ui.HTML','pyjamas.ui.CellFormatter','pyjamas.ui.FocusListener']);
+    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.FocusWidget','pyjamas.Window','pyjamas.ui.PopupPanel','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pyjamas.JSONService','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','LoginPanel','pyjamas.JSONParser','DataService','pygwt','pyjamas.ui.Button','pyjamas.ui.FlowPanel','pyjamas.ui.EventObject','pyjamas.ui.TextBoxBase','pyjamas','ClientBank','pyjamas.ui.HorizontalPanel','pyjamas.ui.RowFormatter','pyjamas.ui.TextBox','pyjamas.ui.Focus','binascii','pyjamas.ui.Label','urllib','pyjamas.ui.FormPanel','pyjamas.ui.ComplexPanel','pyjamas.HTTPRequest','AccountListSink','pyjamas.Timer','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.Cookies','pyjamas.ui.Hidden','pyjamas.ui.HTMLTable','pyjamas.ui.Hyperlink','pyjamas.ui.PasswordTextBox','pyjamas.History','struct','pyjamas.ui.Panel','pyjamas.Factory','base64','pyjamas.ui.MenuBarPopupPanel','IntroSink','pyjamas.ui.CellPanel','pyjamas.DeferredCommand','pyjamas.ui.MouseListener','RegisterPanel','pyjamas.ui.MenuBar','pyjamas.log','jsonrpc.json','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.ui.SimplePanel','DjangoForm','pyjamas.ui.RootPanel','dynamic','pyjamas.ui.UIObject','datetime','pyjamas.DOM','pyjd','pyjamas.ui.Grid','pyjamas.ui.MenuItem','time','DashboardPanel','pyjamas.ui.HTML','pyjamas.ui.CellFormatter','pyjamas.ui.FocusListener']);
 }
 
 function pygwtOnLoad(onLoadError, name) {
