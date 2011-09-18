@@ -3935,6 +3935,98 @@ PYJS_DEPS: ['math', 'sys']
 
 --></script>
 <script type="text/javascript"><!--
+/* start module: Widgets */
+var Widgets;
+$pyjs.loaded_modules['Widgets'] = function (__mod_name__) {
+	if($pyjs.loaded_modules['Widgets'].__was_initialized__) return $pyjs.loaded_modules['Widgets'];
+	Widgets = $pyjs.loaded_modules["Widgets"];
+	Widgets.__was_initialized__ = true;
+	if ((__mod_name__ === null) || (typeof __mod_name__ == 'undefined')) __mod_name__ = 'Widgets';
+	var __name__ = Widgets.__name__ = __mod_name__;
+
+
+	Widgets['DOM'] = pyjslib['___import___']('pyjamas.DOM', null, null, false);
+	Widgets['Label'] = pyjslib['___import___']('pyjamas.ui.Label.Label', null, null, false);
+	Widgets['PseudoLink'] = (function(){
+		var $cls_instance = $pyjs__class_instance('PseudoLink');
+		var $cls_definition = new Object();
+		var $method;
+		$cls_definition.__md5__ = 'b687f5e710f5b1ac3aec5e5fc48f2195';
+		$method = $pyjs__bind_method($cls_instance, '__init__', function(text, listener) {
+			if (this.__is_instance__ === true) {
+				var self = this;
+				var kwargs = arguments.length >= 3 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			} else {
+				var self = arguments[0];
+				text = arguments[1];
+				listener = arguments[2];
+				var kwargs = arguments.length >= 4 ? arguments[arguments.length-1] : arguments[arguments.length];
+				if (typeof kwargs != 'object' || kwargs.__name__ != 'dict' || typeof kwargs.$pyjs_is_kwarg == 'undefined') {
+					kwargs = arguments[arguments.length+1];
+				} else {
+					delete kwargs['$pyjs_is_kwarg'];
+				}
+			}
+			if (typeof kwargs == 'undefined') {
+				kwargs = pyjslib['__empty_dict']();
+				if (typeof listener != 'undefined') {
+					if (listener !== null && typeof listener['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = listener;
+						listener = arguments[3];
+					}
+				} else 				if (typeof text != 'undefined') {
+					if (text !== null && typeof text['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = text;
+						text = arguments[3];
+					}
+				} else 				if (typeof self != 'undefined') {
+					if (self !== null && typeof self['$pyjs_is_kwarg'] != 'undefined') {
+						kwargs = self;
+						self = arguments[3];
+					}
+				} else {
+				}
+			}
+			if (typeof text == 'undefined') text=arguments.callee.__args__[3][1];
+			if (typeof listener == 'undefined') listener=arguments.callee.__args__[4][1];
+			var element;
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('Element'))))) {
+				element = Widgets['DOM']['createElement'](String('a'));
+				element['setAttribute'](String('href'), String('javascript:void(0)'));
+				kwargs.__setitem__(String('Element'), element);
+			}
+			if (pyjslib['bool'](!pyjslib['bool'](kwargs['has_key'](String('StyleName'))))) {
+				kwargs.__setitem__(String('StyleName'), String('pseudolink'));
+			}
+			$pyjs_kwargs_call(Widgets['Label'], '__init__', null, kwargs, [{}, self, text, true]);
+			if (pyjslib['bool'](listener)) {
+				self['addClickListener'](listener);
+			}
+			return null;
+		}
+	, 1, [null,['kwargs'],['self'],['text', null],['listener', null]]);
+		$cls_definition['__init__'] = $method;
+		return $pyjs__class_function($cls_instance, $cls_definition, 
+		                            new Array(Widgets['Label']));
+	})();
+	return this;
+}; /* end Widgets */
+
+
+/* end module: Widgets */
+
+
+/*
+PYJS_DEPS: ['pyjamas.DOM', 'pyjamas', 'pyjamas.ui.Label.Label', 'pyjamas.ui', 'pyjamas.ui.Label']
+*/
+
+--></script>
+<script type="text/javascript"><!--
 /* start module: pyjamas.ui.Grid */
 $pyjs.loaded_modules['pyjamas.ui.Grid'] = function (__mod_name__) {
 	if($pyjs.loaded_modules['pyjamas.ui.Grid'].__was_initialized__) return $pyjs.loaded_modules['pyjamas.ui.Grid'];
@@ -18856,12 +18948,13 @@ $pyjs.loaded_modules['LoginPanel'] = function (__mod_name__) {
 	LoginPanel['Button'] = pyjslib['___import___']('pyjamas.ui.Button.Button', null, null, false);
 	LoginPanel['HorizontalPanel'] = pyjslib['___import___']('pyjamas.ui.HorizontalPanel.HorizontalPanel', null, null, false);
 	LoginPanel['Window'] = pyjslib['___import___']('pyjamas.Window', null, null, false);
+	LoginPanel['PseudoLink'] = pyjslib['___import___']('Widgets.PseudoLink', null, null, false);
 	LoginPanel['DataService'] = pyjslib['___import___']('DataService.DataService', null, null, false);
 	LoginPanel['LoginPanel'] = (function(){
 		var $cls_instance = $pyjs__class_instance('LoginPanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '666cfa1f0cbb0847f9dd22e5664bf82e';
+		$cls_definition.__md5__ = 'f187c366f2e5c3fd512a0577f5e3b5e4';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(listener) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -18892,7 +18985,7 @@ $pyjs.loaded_modules['LoginPanel'] = function (__mod_name__) {
 						self['error_message']));
 			form_panel['add'](grid);
 			button_box = $pyjs_kwargs_call(null, LoginPanel['HorizontalPanel'], null, null, [{Width:String('100%')}]);
-			register_button = LoginPanel['Button'](gettext("Create an account"), ((($attr7=self['onRegisterButtonClick']) !== null & ($attr8=self).__is_instance__) && typeof $attr7 == 'function'?
+			register_button = LoginPanel['PseudoLink'](gettext("Create an account"), ((($attr7=self['onRegisterButtonClick']) !== null & ($attr8=self).__is_instance__) && typeof $attr7 == 'function'?
 						pyjslib['getattr']($attr8, 'onRegisterButtonClick'):
 						self['onRegisterButtonClick']));
 			submit_button = LoginPanel['Button'](gettext("Login"), ((($attr9=self['onSubmitButtonClick']) !== null & ($attr10=self).__is_instance__) && typeof $attr9 == 'function'?
@@ -19000,7 +19093,7 @@ $pyjs.loaded_modules['LoginPanel'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.ui.PasswordTextBox.PasswordTextBox', 'pyjamas.ui.PasswordTextBox', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.Window', 'DataService.DataService', 'DataService']
+PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.ui.PasswordTextBox.PasswordTextBox', 'pyjamas.ui.PasswordTextBox', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.Window', 'Widgets.PseudoLink', 'Widgets', 'DataService.DataService', 'DataService']
 */
 
 --></script>
@@ -29502,12 +29595,13 @@ $pyjs.loaded_modules['RegisterPanel'] = function (__mod_name__) {
 	RegisterPanel['HorizontalPanel'] = pyjslib['___import___']('pyjamas.ui.HorizontalPanel.HorizontalPanel', null, null, false);
 	RegisterPanel['Window'] = pyjslib['___import___']('pyjamas.Window', null, null, false);
 	RegisterPanel['Form'] = pyjslib['___import___']('DjangoForm.Form', null, null, false);
+	RegisterPanel['PseudoLink'] = pyjslib['___import___']('Widgets.PseudoLink', null, null, false);
 	RegisterPanel['FormService'] = pyjslib['___import___']('DataService.FormService', null, null, false);
 	RegisterPanel['RegisterPanel'] = (function(){
 		var $cls_instance = $pyjs__class_instance('RegisterPanel');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '93675380c30b2bb4e9165dfb4250dd0f';
+		$cls_definition.__md5__ = '9f37a27ff01043e6eb95a12ab0756f17';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(listener) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -29524,7 +29618,7 @@ $pyjs.loaded_modules['RegisterPanel'] = function (__mod_name__) {
 			submit_button = RegisterPanel['Button'](gettext("Create the account"), ((($attr1=self['onSubmitButtonClick']) !== null & ($attr2=self).__is_instance__) && typeof $attr1 == 'function'?
 						pyjslib['getattr']($attr2, 'onSubmitButtonClick'):
 						self['onSubmitButtonClick']));
-			cancel_button = RegisterPanel['Button'](gettext("Cancel"), ((($attr3=self['onCancelButtonClick']) !== null & ($attr4=self).__is_instance__) && typeof $attr3 == 'function'?
+			cancel_button = RegisterPanel['PseudoLink'](gettext("Cancel"), ((($attr3=self['onCancelButtonClick']) !== null & ($attr4=self).__is_instance__) && typeof $attr3 == 'function'?
 						pyjslib['getattr']($attr4, 'onCancelButtonClick'):
 						self['onCancelButtonClick']));
 			button_box['add'](cancel_button);
@@ -29639,7 +29733,7 @@ $pyjs.loaded_modules['RegisterPanel'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.ui.PasswordTextBox.PasswordTextBox', 'pyjamas.ui.PasswordTextBox', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.Window', 'DjangoForm.Form', 'DjangoForm', 'DataService.FormService', 'DataService']
+PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.ui.TextBox.TextBox', 'pyjamas.ui.TextBox', 'pyjamas.ui.PasswordTextBox.PasswordTextBox', 'pyjamas.ui.PasswordTextBox', 'pyjamas.ui.Button.Button', 'pyjamas.ui.Button', 'pyjamas.ui.HorizontalPanel.HorizontalPanel', 'pyjamas.ui.HorizontalPanel', 'pyjamas.Window', 'DjangoForm.Form', 'DjangoForm', 'Widgets.PseudoLink', 'Widgets', 'DataService.FormService', 'DataService']
 */
 
 --></script>
@@ -30835,12 +30929,13 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 	AccountListSink['Grid'] = pyjslib['___import___']('pyjamas.ui.Grid.Grid', null, null, false);
 	AccountListSink['Label'] = pyjslib['___import___']('pyjamas.ui.Label.Label', null, null, false);
 	AccountListSink['Window'] = pyjslib['___import___']('pyjamas.Window', null, null, false);
+	AccountListSink['PseudoLink'] = pyjslib['___import___']('Widgets.PseudoLink', null, null, false);
 	AccountListSink['DataService'] = pyjslib['___import___']('DataService.DataService', null, null, false);
 	AccountListSink['AccountListSink'] = (function(){
 		var $cls_instance = $pyjs__class_instance('AccountListSink');
 		var $cls_definition = new Object();
 		var $method;
-		$cls_definition.__md5__ = '0130b350720d955cdb433a9bb0c95e6a';
+		$cls_definition.__md5__ = 'f05142684726304824bc7ec1f1b4b748';
 		$method = $pyjs__bind_method($cls_instance, '__init__', function(hendler) {
 			if (this.__is_instance__ === true) {
 				var self = this;
@@ -30889,10 +30984,9 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 				$iter1_idx = 0;
 				while (typeof ($iter1_nextval=($iter1_type?($iter1_type > 0?$iter1_iter.next(true,false):pyjslib['wrapped_next']($iter1_iter)):$iter1_array[$iter1_idx++])) != 'undefined') {
 					row = $iter1_nextval;
-					link = $pyjs_kwargs_call(null, AccountListSink['Label'], null, null, [{text:accounts.__getitem__(row).__getitem__(String('number')), StyleName:String('pseudo-link'), ID:accounts.__getitem__(row).__getitem__(String('number'))}]);
-					link['addClickListener'](((($attr3=self['onClick']) !== null & ($attr4=self).__is_instance__) && typeof $attr3 == 'function'?
+					link = $pyjs_kwargs_call(null, AccountListSink['PseudoLink'], null, null, [{ID:accounts.__getitem__(row).__getitem__(String('number'))}, accounts.__getitem__(row).__getitem__(String('number')), ((($attr3=self['onClick']) !== null & ($attr4=self).__is_instance__) && typeof $attr3 == 'function'?
 								pyjslib['getattr']($attr4, 'onClick'):
-								self['onClick']));
+								self['onClick'])]);
 					self['grid']['setWidget']((typeof ($add3=row)==typeof ($add4=1) && (typeof $add3=='number'||typeof $add3=='string')?
 						$add3+$add4:
 						pyjslib['op_add']($add3,$add4)), 0, link);
@@ -30980,7 +31074,7 @@ $pyjs.loaded_modules['AccountListSink'] = function (__mod_name__) {
 
 
 /*
-PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.Window', 'DataService.DataService', 'DataService']
+PYJS_DEPS: ['pyjamas.ui.VerticalPanel.VerticalPanel', 'pyjamas', 'pyjamas.ui', 'pyjamas.ui.VerticalPanel', 'pyjamas.ui.HasAlignment', 'pyjamas.ui.Grid.Grid', 'pyjamas.ui.Grid', 'pyjamas.ui.Label.Label', 'pyjamas.ui.Label', 'pyjamas.Window', 'Widgets.PseudoLink', 'Widgets', 'DataService.DataService', 'DataService']
 */
 
 --></script>
@@ -31381,7 +31475,7 @@ function prepare_app() {
         };
         wait();
     }
-    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.FocusWidget','pyjamas.Window','pyjamas.ui.PopupPanel','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pyjamas.JSONService','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','LoginPanel','pyjamas.JSONParser','DataService','pygwt','pyjamas.ui.Button','pyjamas.ui.FlowPanel','pyjamas.ui.EventObject','pyjamas.ui.TextBoxBase','pyjamas','ClientBank','pyjamas.ui.HorizontalPanel','pyjamas.ui.RowFormatter','pyjamas.ui.TextBox','pyjamas.ui.Focus','binascii','pyjamas.ui.Label','urllib','pyjamas.ui.FormPanel','pyjamas.ui.ComplexPanel','pyjamas.HTTPRequest','AccountListSink','pyjamas.Timer','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.Cookies','pyjamas.ui.Hidden','pyjamas.ui.HTMLTable','pyjamas.ui.Hyperlink','pyjamas.ui.PasswordTextBox','pyjamas.History','struct','pyjamas.ui.Panel','pyjamas.Factory','base64','pyjamas.ui.MenuBarPopupPanel','IntroSink','pyjamas.ui.CellPanel','pyjamas.DeferredCommand','pyjamas.ui.MouseListener','RegisterPanel','pyjamas.ui.MenuBar','pyjamas.log','jsonrpc.json','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.ui.SimplePanel','DjangoForm','pyjamas.ui.RootPanel','dynamic','pyjamas.ui.UIObject','datetime','pyjamas.DOM','pyjd','pyjamas.ui.Grid','pyjamas.ui.MenuItem','time','DashboardPanel','pyjamas.ui.HTML','pyjamas.ui.CellFormatter','pyjamas.ui.FocusListener']);
+    wait_for_loading_modules(app_imported, ['pyjamas.ui','pyjamas.ui.FocusWidget','pyjamas.Window','pyjamas.ui.PopupPanel','pyjamas.ui.Widget','pyjamas.ui.ClickListener','pygwt','pyjamas.Location','pyjamas.ui.VerticalPanel','sys','LoginPanel','pyjamas.JSONParser','DataService','Widgets','pyjamas.ui.Button','pyjamas.ui.FlowPanel','pyjamas.ui.TextBoxBase','pyjamas','ClientBank','pyjamas.ui.HorizontalPanel','pyjamas.ui.RowFormatter','pyjamas.ui.TextBox','pyjamas.ui.Focus','binascii','pyjamas.ui.Label','urllib','datetime','pyjamas.ui.FormPanel','pyjamas.ui.ComplexPanel','pyjamas.HTTPRequest','AccountListSink','pyjamas.Timer','pyjamas.ui.AbsolutePanel','pyjamas.ui.KeyboardListener','math','pyjamas.ui.Event','pyjamas.Cookies','pyjamas.ui.Hidden','pyjamas.ui.HTMLTable','pyjamas.ui.Hyperlink','pyjamas.ui.PasswordTextBox','pyjamas.History','struct','pyjamas.ui.Panel','pyjamas.ui.SimplePanel','pyjamas.Factory','base64','pyjamas.ui.MenuBarPopupPanel','IntroSink','pyjamas.ui.CellPanel','pyjamas.DeferredCommand','pyjamas.ui.MouseListener','RegisterPanel','pyjamas.ui.MenuBar','pyjamas.log','jsonrpc.json','pyjslib','pyjamas.ui.ButtonBase','jsonrpc','pyjamas.JSONService','DjangoForm','pyjamas.ui.RootPanel','dynamic','pyjamas.ui.UIObject','pyjamas.ui.EventObject','pyjamas.DOM','pyjd','pyjamas.ui.Grid','pyjamas.ui.MenuItem','time','DashboardPanel','pyjamas.ui.HTML','pyjamas.ui.CellFormatter','pyjamas.ui.FocusListener']);
 }
 
 function pygwtOnLoad(onLoadError, name) {

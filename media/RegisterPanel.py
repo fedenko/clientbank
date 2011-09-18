@@ -10,6 +10,7 @@ from pyjamas import Window
 from __pyjamas__ import JS, console
 
 from DjangoForm import Form
+from Widgets import PseudoLink
 from DataService import FormService
 
 
@@ -26,7 +27,7 @@ class RegisterPanel(VerticalPanel):
         button_box = HorizontalPanel(Width="100%")
         
         submit_button = Button(JS('gettext("Create the account")'), self.onSubmitButtonClick)
-        cancel_button = Button(JS('gettext("Cancel")'), self.onCancelButtonClick)
+        cancel_button = PseudoLink(JS('gettext("Cancel")'), self.onCancelButtonClick)
         
         button_box.add(cancel_button)
         button_box.add(submit_button)

@@ -6,6 +6,7 @@ from pyjamas.ui.Label import Label
 
 from pyjamas import Window
 
+from Widgets import PseudoLink
 from DataService import DataService
 
 class AccountListSink(VerticalPanel):
@@ -40,10 +41,9 @@ class AccountListSink(VerticalPanel):
         if rows > 0:
             self.grid.resize(rows+1, 3)
             for row in range(rows):
-                link = Label(text=accounts[row]['number'],
-                             StyleName="pseudo-link",
-                             ID=accounts[row]['number'])
-                link.addClickListener(self.onClick)
+                link = PseudoLink(accounts[row]['number'],
+                                  self.onClick,
+                                  ID=accounts[row]['number'])
                 self.grid.setWidget(row+1, 0, link)
                 self.grid.setText(row+1, 1, accounts[row]['type'])
                 self.grid.setText(row+1, 2, accounts[row]['balance'])

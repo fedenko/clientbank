@@ -7,6 +7,7 @@ from pyjamas.ui.PasswordTextBox import PasswordTextBox
 from pyjamas.ui.Button import Button
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
 from pyjamas import Window
+from Widgets import PseudoLink
 
 from DataService import DataService
 
@@ -45,7 +46,7 @@ class LoginPanel(VerticalPanel):
         
         button_box = HorizontalPanel(Width="100%")
         
-        register_button = Button(JS('gettext("Create an account")'),
+        register_button = PseudoLink(JS('gettext("Create an account")'),
                                  self.onRegisterButtonClick)
         submit_button = Button(JS('gettext("Login")'),
                                self.onSubmitButtonClick)

@@ -37,6 +37,11 @@
   text-align: right;
 }
 
+.form .pseudolink{
+  font-family: sans-serif;
+  font-size: smaller;
+}
+
 /* Login */
 
 .login, .register {
@@ -83,11 +88,3 @@
 .grid td {
   border: 1px solid #AAAAAA;
 }
-
-.pseudo-link {
-  cursor: pointer;
-}
-
-div.pseudo-link:hover { 
-  text-decoration: underline;
-   }
